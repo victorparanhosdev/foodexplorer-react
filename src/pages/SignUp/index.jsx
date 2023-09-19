@@ -1,6 +1,6 @@
 import { Container, Form } from "./styles"
 import { Input } from "../../components/Input"
-
+import { Link } from "react-router-dom"
 export function SignUp(){
     return(
         <Container>
@@ -15,7 +15,7 @@ export function SignUp(){
                 <Input type="email" title="Email" placeholder="Exemplo: exemplo@exemplo.com.br"/>
                 <Input type="password" title="Senha" placeholder="No mínimo 6 caracteres"/>
                 <button type="submit">Criar conta</button>
-                <a href="">Já tenho uma conta</a>
+                <Link to="/login" href="">Já tenho uma conta</Link>
             </Form>
 
         </Container>
