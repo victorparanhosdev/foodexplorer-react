@@ -17,7 +17,7 @@ background: ${({theme})=> theme.COLORS.DARK_400};
         font-family: "Roboto", sans-serif;
         font-weight: 700;
         font-size: 4.2rem;
-        color: white;
+        color: ${({theme})=> theme.COLORS.LIGHT_100};
     }
 }
 
@@ -35,7 +35,6 @@ h1 {
     font-weight: 400;
     font-size: 3.2rem;
     text-align: center;
-    color: white;
     color: ${({theme})=> theme.COLORS.LIGHT_100};
 }
 
@@ -50,12 +49,7 @@ button {
     border-radius: 0.5rem;
     margin-bottom: 3.2rem;
     cursor: pointer;
-    transition: 0.4s opacity;
-    
-    &:hover{
-        opacity: 0.8;
-    }
-}
+   }
 
 a {
     display: block;
