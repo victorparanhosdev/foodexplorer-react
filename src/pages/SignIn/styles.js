@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-height: 100vh;
+min-height: 100vh;
 display: flex;
 align-items: center;
 justify-content: space-evenly;
@@ -57,6 +57,7 @@ a {
     color: ${({theme})=> theme.COLORS.LIGHT_100};
     font-size: 1.4rem;
     text-align: center;
+    cursor: pointer;
 }
 
 `
