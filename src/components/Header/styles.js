@@ -7,7 +7,7 @@ export const Container = styled.header`
    grid-area: "header";
 
 nav {
-    width: 100%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -58,7 +58,7 @@ button {
     align-items: center;
     background: ${({ theme }) => theme.COLORS.DARK_900};
     border-radius: 0.5rem;
-    padding: 1.6rem 1.2rem;
+    padding-inline: 1.2rem;
     height: 4.8rem;
     width: min(40.9rem, 100%);
     svg {
@@ -68,7 +68,7 @@ button {
     input {
         color: ${({ theme }) => theme.COLORS.LIGHT_400};
         width: 100%;
-
+        padding-block: 1.6rem;
         outline: none;
         border: none;
         background: transparent;
