@@ -4,7 +4,6 @@ export const Container = styled.header`
    background: ${({ theme }) => theme.COLORS.DARK_600};
    display: flex;
    align-items: center;
-   grid-area: "header";
 
 nav {
 

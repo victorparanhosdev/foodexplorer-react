@@ -21,6 +21,21 @@ a {
 }
 
 
+::-webkit-scrollbar-thumb{
+    background: ${({theme}) => theme.COLORS.DARK_900};
+    border-radius: 5rem;
+}
+
+::-webkit-scrollbar {
+  background: ${({theme}) => theme.COLORS.DARK_200};;
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+
+
+
+
 
 
 `
