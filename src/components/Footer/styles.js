@@ -15,14 +15,12 @@ align-items: center;
 
     > p {
     font-family: 'Roboto', sans-serif;
+    font-size: 1.4rem;
     font-weight: 400;
     color: ${({ theme }) => theme.COLORS.LIGHT_200};
 
     
-}
-
-
-
+    }
 }
 
 .logofooter {
@@ -30,14 +28,10 @@ align-items: center;
     align-items: center;
     gap:1rem;
 
-        path {
-            fill: ${({ theme }) => theme.COLORS.LIGHT_700}
-        }
-
 
     span {
         font-family: 'Roboto', sans-serif;
-        font-weight: 900;
+        font-weight: 800;
         font-size: 2.4rem;
         color: ${({ theme }) => theme.COLORS.LIGHT_700}
     }

@@ -22,8 +22,10 @@ background: ${({theme})=> theme.COLORS.DARK_400};
 
 
 .swiper-button-prev:after, .swiper-button-next:after {
-    color: white;
-    font-size: 3rem;
+    color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    font-size: 2.75rem;
+
+
 }
 
 
@@ -93,6 +95,7 @@ background: ${({theme})=> theme.COLORS.DARK_400};
             input {
                 text-align: center;
                 width: 4rem;
+                outline: none;
             }
 
 
@@ -101,7 +104,7 @@ background: ${({theme})=> theme.COLORS.DARK_400};
       
 
        .btn-incluir {
-        background-color: ${({theme})=> theme.COLORS.TINTS_TOMATO};
+        background-color: ${({theme})=> theme.COLORS.TINTS_TOMATO_100};
         color: ${({theme})=> theme.COLORS.LIGHT_100};
         font-weight: 400;
         padding: 1.2rem 2.4rem;

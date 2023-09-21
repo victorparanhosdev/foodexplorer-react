@@ -24,7 +24,7 @@ button {
 }
 
 .btn-pedido {
-    background: ${({ theme }) => theme.COLORS.TINTS_TOMATO};
+    background: ${({ theme }) => theme.COLORS.TINTS_TOMATO_100};
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
     font-weight: 400;
     font-family: 'Poppins', sans-serif;
