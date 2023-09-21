@@ -13,11 +13,16 @@ export default createGlobalStyle`
 
 body * {
     font-size: 1.6rem;
-
+    font-family: 'Poppins', sans-serif;
 }
 
 a {
     text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
 }
 
 

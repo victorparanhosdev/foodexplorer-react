@@ -26,14 +26,13 @@ button {
 .btn-pedido {
     background: ${({ theme }) => theme.COLORS.TINTS_TOMATO};
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
-    font-weight: 100;
-   
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
     padding: 1.6rem 4.65rem;
     border-radius: 0.5rem;
     display: flex;
     align-items: center;
     gap: 0.8rem;
-
 }
 
 > div:nth-child(1) {
