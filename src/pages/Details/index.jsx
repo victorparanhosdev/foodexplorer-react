@@ -3,15 +3,21 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import { MdArrowBackIos } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 export function Details() {
+
+  const navigate = useNavigate()
+  function ButtonBack(){
+    navigate(-1)
+  }
   return (
     <Container>
       <Header />
 
       <Content>
         <div className="box-btn-back">
-          <button>
+          <button onClick={ButtonBack}>
             <MdArrowBackIos />
             voltar
           </button>
@@ -41,7 +47,7 @@ export function Details() {
                 <button>
                   <FiMinus />
                 </button>
-                <input type="text" value={0} readOnly />
+                <input type="text" value="01" readOnly />
                 <button>
                   <FiPlus />
                 </button>
