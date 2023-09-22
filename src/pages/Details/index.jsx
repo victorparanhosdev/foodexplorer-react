@@ -8,16 +8,17 @@ import { useNavigate } from "react-router-dom";
 export function Details() {
 
   const navigate = useNavigate()
-  function ButtonBack(){
+  function ButtonBack(event){
+    event.preventDefault()
     navigate(-1)
+ 
   }
   return (
     <Container>
       <Header />
-
       <Content>
         <div className="box-btn-back">
-          <button onClick={ButtonBack}>
+          <button type="button" onClick={(e)=> ButtonBack(e)}>
             <MdArrowBackIos />
             voltar
           </button>
@@ -59,7 +60,6 @@ export function Details() {
           </div>
         </div>
       </Content>
-
       <Footer />
     </Container>
   );

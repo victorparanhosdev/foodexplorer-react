@@ -3,10 +3,13 @@ import styled from "styled-components";
 export const Container = styled.div`
 min-height: 100vh;
 display: grid;
-grid-template-rows: 10.4rem auto auto auto auto 7.7rem;
+grid-template-rows: 10.4rem auto auto 7.7rem;
 grid-auto-columns: 100%;
 background: ${({theme})=> theme.COLORS.DARK_400};
 
+`
+
+export const Content = styled.section`
 
 
 .card-principal::after {

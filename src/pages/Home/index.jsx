@@ -1,12 +1,13 @@
-import { Container } from "./styles";
+import { Container, Content } from "./styles";
 import { Header } from "../../components/Header";
 import { Banner } from "../../components/Banner";
-import { Section } from "../../components/Section";
+import { Article } from "../../components/Article"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectFade } from 'swiper/modules';
 import { FiHeart } from "react-icons/fi"
 import { FiPlus, FiMinus } from 'react-icons/fi';
 import { Footer } from "../../components/Footer";
+import { Button } from "../../components/Button";
 import 'swiper/css';
 import 'swiper/css/bundle';
 import 'swiper/css/effect-fade';
@@ -15,29 +16,15 @@ export function Home() {
         <Container>
             <Header />
             <Banner />
-            <Section title="Refeições">
+            <Content>
+            <Article title="Refeições">
                 <Swiper className="card-principal" modules={[Navigation, EffectFade]} navigation slidesPerView={'auto'} spaceBetween={27}>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-1.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-2.png" alt="" /><FiHeart size={24} /></div>
@@ -172,8 +159,8 @@ export function Home() {
                         </div>
                     </SwiperSlide>
                 </Swiper>
-            </Section>
-            <Section title="Sobremesas">
+            </Article>
+            <Article title="Sobremesas">
                 <Swiper className="card-principal" modules={[Navigation, EffectFade]} navigation slidesPerView={'auto'} spaceBetween={27}>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-8.png" alt="" /><FiHeart size={24} /></div>
@@ -330,8 +317,8 @@ export function Home() {
                         </div>
                     </SwiperSlide>
                 </Swiper>
-            </Section>
-            <Section title="Bebidas">
+            </Article>
+            <Article title="Bebidas">
                 <Swiper className="card-principal" modules={[Navigation, EffectFade]} navigation slidesPerView={'auto'} spaceBetween={27}>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-3.png" alt="" /><FiHeart size={24} /></div>
@@ -488,10 +475,9 @@ export function Home() {
                         </div>
                     </SwiperSlide>
                 </Swiper>
-            </Section>
+            </Article>
+            </Content>
             <Footer />
-
-
         </Container>
     )
 }

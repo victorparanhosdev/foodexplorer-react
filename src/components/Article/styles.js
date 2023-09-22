@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.section`
+export const Container = styled.article`
     width: min(112rem, 95%);
     margin: auto auto 4.8rem;
 
