@@ -167,17 +167,32 @@ margin: 0 auto;
             border-radius: 0.8rem;
         }
     }
-
-    > button {
+    > div:nth-child(4){
         place-self: end;
+
+        button {
         border: none;
         color: ${({ theme }) => theme.COLORS.LIGHT_100};
-        background: ${({ theme }) => theme.COLORS.TINTS_TOMATO_400};
+
         padding: 1.2rem 2.4rem;
         border-radius: 0.5rem;
         font-weight: 400;
+        }
+
+        button[type="button"]{
+  
+            background: ${({ theme }) => theme.COLORS.DARK_800};
+        }
+        button[type="submit"]{
+            background: ${({ theme }) => theme.COLORS.TINTS_TOMATO_400};
+        }
     }
+
+    
 }
+
+
+
 
 
 `

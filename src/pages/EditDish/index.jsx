@@ -5,7 +5,7 @@ import { MdArrowBackIos } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { LuUpload } from "react-icons/lu"
 
-export function NewDish() {
+export function EditDish() {
 
     const navigate = useNavigate()
     function ButtonBack(event) {
@@ -26,7 +26,7 @@ export function NewDish() {
                     </button>
                 </div>
 
-                <h1>Adicionar Prato</h1>
+                <h1>Editar Prato</h1>
 
 
                 <form action="" className="edit-content">
@@ -55,7 +55,7 @@ export function NewDish() {
 
                     <div>
                         <div>
-                            <span>Ingredientes</span>
+                            <span htmlFor="ingredientes">Ingredientes</span>
                             <div>
                                 <input type="text" value="Pão Naan" readOnly />
                                 <input type="text" placeholder="Adicionar" id="ingredientes" />
@@ -75,7 +75,12 @@ export function NewDish() {
                         <textarea placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" name="" id="" cols="30" rows="10"></textarea>
 
                     </div>
-                    <button type="submit">Salvar Alterações</button>
+
+                    <div>
+                        <button type="button">Excluir prato</button>
+                        <button type="submit">Salvar Alterações</button>
+                    </div>
+
                 </form>
 
 
