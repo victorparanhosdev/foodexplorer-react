@@ -5,7 +5,6 @@ import { Article } from "../../components/Article"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectFade } from 'swiper/modules';
 import { FiHeart } from "react-icons/fi"
-import { FiPlus, FiMinus } from 'react-icons/fi';
 import { Footer } from "../../components/Footer";
 import { Button } from "../../components/Button";
 import 'swiper/css';
@@ -31,132 +30,42 @@ export function Home() {
                         <h1>Spaguetti Gambe</h1>
                         <p>Massa fresca com camarões e pesto. </p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-3.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-4.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-5.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-6.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-7.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                 </Swiper>
             </Article>
@@ -167,154 +76,49 @@ export function Home() {
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-9.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-10.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-11.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-1.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-2.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                 </Swiper>
             </Article>
@@ -325,154 +129,49 @@ export function Home() {
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-4.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-8.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-9.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-10.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-5.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                     <SwiperSlide className="card">
                         <div className="dish"><img src="/src/assets/Mask group-1.png" alt="" /><FiHeart size={24} /></div>
                         <h1>Spaguetti Gambe</h1>
                         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
                         <span>R$79,90</span>
-                        <div>
-                            <div>
-                                <button>
-                                    <FiMinus />
-                                </button>
-                                <input
-                                    type="text"
-                                    value={0}
-                                    readOnly
-                                />
-                                <button >
-                                    <FiPlus />
-                                </button>
-                            </div>
-                            <button className="btn-incluir" type="button">incluir</button>
-                        </div>
+                        <Button />
                     </SwiperSlide>
                 </Swiper>
             </Article>

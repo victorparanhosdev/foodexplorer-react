@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-min-height: 100vh;
+
 display: grid;
 grid-template-rows: 10.4rem auto 7.7rem;
 grid-auto-columns: 100%;
@@ -12,8 +12,11 @@ background: ${({theme})=> theme.COLORS.DARK_400};
 `
 
 export const Content = styled.section`
-margin: 2.4rem auto;
+
+margin: 0 auto;
+padding-block: 2.4rem;
 width: min(112rem, 95%);
+
 
 .box-btn-back {
     button {
