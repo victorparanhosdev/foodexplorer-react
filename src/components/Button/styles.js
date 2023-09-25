@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   gap: 1.6rem;
-  
+
   > div {
     display: flex;
     input,
@@ -28,6 +28,5 @@ export const Container = styled.div`
     border: none;
     cursor: pointer;
   }
-
 
 `;
