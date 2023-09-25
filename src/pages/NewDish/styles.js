@@ -106,14 +106,14 @@ export const Content = styled.section`
         > div {
           display: grid;
           grid-auto-flow: dense;
-          grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-          grid-template-rows: repeat(auto-fill, 4rem);
+          grid-template-columns: repeat(auto-fill, 15rem);
           align-items: center;
           gap: 1.6rem;
           padding: 0.8rem;
           background: ${({theme})=> theme.COLORS.DARK_800};
           border-radius: 0.8rem;
         }
+
       }
       > div:nth-child(2) {
         input {

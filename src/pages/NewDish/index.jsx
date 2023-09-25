@@ -58,25 +58,8 @@ export function NewDish() {
                             <span>Ingredientes</span>
                             
                             <div>
-                            <NewTag value="Pão"/>
-                            <NewTag value="Pão"/>
-                            <NewTag value="Pão"/>
-                            <NewTag value="Pão"/>
-                            <NewTag value="Pão"/>
-                            <NewTag value="Pão"/>
-                            <NewTag value="Pão"/>
-                            <NewTag value="Pão"/>
-                            <NewTag value="Pão"/>
-                            <NewTag value="Pão"/>
-                            <NewTag value="Pão"/>
-                            <NewTag value="Pão"/>
-                            <NewTag value="Pão"/>
-                            <NewTag value="Pão"/>
-                            <NewTag value="Pão"/>
-                            <NewTag value="Pão"/>
-                            <NewTag value="Pão"/>
-                            <NewTag value="Pão"/>
-                            <NewTag placeholder="Adicionar"/>
+                            <NewTag key="2" value="Pão"/>
+                            <NewTag isnew="true" placeholder="Adicionar"/>
                             </div>
 
                         </div>

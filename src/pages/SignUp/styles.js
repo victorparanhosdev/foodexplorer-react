@@ -39,7 +39,7 @@ h1 {
 }
 
 button {
-    background: ${({theme})=> theme.COLORS.TINTS_TOMATO};
+    background: ${({theme})=> theme.COLORS.TINTS_TOMATO_100};
     color: ${({theme})=> theme.COLORS.LIGHT_100};
     border: none;
     padding: 1.2rem 3.2rem;

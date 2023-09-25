@@ -15,6 +15,7 @@ export const Container = styled.div`
   input {
     width:100%;
     color: ${({ theme, $isnew }) => $isnew ? theme.COLORS.LIGHT_500 : theme.COLORS.LIGHT_100};
+    
     background: ${({ theme, $isnew }) => $isnew ? "transparent" : theme.COLORS.LIGHT_600};
     outline: none;
     border: none;
