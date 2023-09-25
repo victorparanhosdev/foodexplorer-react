@@ -59,7 +59,24 @@ export function NewDish() {
                             
                             <div>
                             <NewTag value="Pão"/>
-                            <NewTag isNew placeholder="Adicionar"/>
+                            <NewTag value="Pão"/>
+                            <NewTag value="Pão"/>
+                            <NewTag value="Pão"/>
+                            <NewTag value="Pão"/>
+                            <NewTag value="Pão"/>
+                            <NewTag value="Pão"/>
+                            <NewTag value="Pão"/>
+                            <NewTag value="Pão"/>
+                            <NewTag value="Pão"/>
+                            <NewTag value="Pão"/>
+                            <NewTag value="Pão"/>
+                            <NewTag value="Pão"/>
+                            <NewTag value="Pão"/>
+                            <NewTag value="Pão"/>
+                            <NewTag value="Pão"/>
+                            <NewTag value="Pão"/>
+                            <NewTag value="Pão"/>
+                            <NewTag placeholder="Adicionar"/>
                             </div>
 
                         </div>

@@ -5,21 +5,19 @@ export const Container = styled.div`
   gap: 0.8rem;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  border: ${({ theme, isNew }) => isNew ? `2px dashed ${theme.COLORS.LIGHT_500}` : "none"};
+  border: ${({ theme, $isnew }) => $isnew ? `2px dashed ${theme.COLORS.LIGHT_500}` : "none"};
   border-radius: 0.8rem;
   padding: 0.8rem 1.6rem;
-  background: ${({ theme, isNew }) =>
-    isNew ? "transparent" : theme.COLORS.LIGHT_600};
-    color: ${({ theme, isNew }) =>
-    isNew ? theme.COLORS.LIGHT_500 : theme.COLORS.LIGHT_100};
+  background: ${({ theme, $isnew }) => $isnew ? "transparent" : theme.COLORS.LIGHT_600};
+  color: ${({ theme, $isnew }) => $isnew ? theme.COLORS.LIGHT_500 : theme.COLORS.LIGHT_100};
+
     
   input {
-    width: 10rem;
-    color: ${({ theme, isNew }) =>
-    isNew ? theme.COLORS.LIGHT_500 : theme.COLORS.LIGHT_100};
-    background: transparent;
+    width:100%;
+    color: ${({ theme, $isnew }) => $isnew ? theme.COLORS.LIGHT_500 : theme.COLORS.LIGHT_100};
+    background: ${({ theme, $isnew }) => $isnew ? "transparent" : theme.COLORS.LIGHT_600};
     outline: none;
-    border: none
+    border: none;
     
   }
 

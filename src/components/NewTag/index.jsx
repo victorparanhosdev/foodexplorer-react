@@ -1,10 +1,10 @@
 import { Container } from "./styles"
 import {FiPlus, FiX} from 'react-icons/fi';
-export function NewTag({isNew, value, onClick, ...rest}){
+export function NewTag({$isnew, value, onClick, ...rest}){
     return(
-        <Container isNew={isNew}>
-            <input type="text" value={value} readOnly={!isNew} {...rest} />
-            <button type="button" onClick={onClick} className={isNew ? 'button-add' : 'button-delete'}> {isNew ? <FiPlus/> : <FiX/>}</button>
+        <Container $isnew={$isnew}>
+            <input type="text" value={value} readOnly={!$isnew} {...rest} />
+            <button type="button" onClick={onClick} className={$isnew ? 'button-add' : 'button-delete'}> {$isnew ? <FiPlus/> : <FiX/>}</button>
         </Container>
     )
 }

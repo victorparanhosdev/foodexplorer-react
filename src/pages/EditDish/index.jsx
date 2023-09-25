@@ -57,8 +57,15 @@ export function EditDish() {
                         <div>
                             <span htmlFor="ingredientes">Ingredientes</span>
                             <div>
-                            <NewTag value="Pão"/>
-                            <NewTag isNew placeholder="Adicionar"/>
+                            <NewTag key={1} value="Pão"/>
+                            <NewTag key={2} value="Pão"/>
+                            <NewTag key={3} value="Pão"/>
+                            <NewTag key={4} value="Pão"/>
+                            <NewTag key={10} value="Pão"/>
+                            <NewTag key={5} value="Pão"/>
+                            <NewTag key={6} value="Pão"/>
+                            <NewTag key={7} value="Pão"/>
+                            <NewTag $isnew="true" placeholder="Adicionar"/>
                             </div>
 
                         </div>
