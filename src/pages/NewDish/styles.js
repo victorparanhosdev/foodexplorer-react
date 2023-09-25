@@ -120,18 +120,11 @@ margin: 0 auto;
 
             >div {
                 display: flex;
+                align-items: center;
                 gap: 1.6rem;
                 padding: 0.8rem;
                 background: ${({ theme }) => theme.COLORS.DARK_800};
                 border-radius: 0.8rem;
-
-                input {
-                    padding: 0.8rem 1.6rem;
-                    border-radius: 0.8rem;
-                    border: none;
-                    width: fit-content;
-                    background: gray;
-                }
             }
         }
         > div:nth-child(2){

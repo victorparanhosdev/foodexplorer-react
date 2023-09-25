@@ -4,7 +4,7 @@ import { Footer } from "../../components/Footer"
 import { MdArrowBackIos } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { LuUpload } from "react-icons/lu"
-
+import { NewTag } from "../../components/NewTag";
 export function NewDish() {
 
     const navigate = useNavigate()
@@ -56,9 +56,10 @@ export function NewDish() {
                     <div>
                         <div>
                             <span>Ingredientes</span>
+                            
                             <div>
-                                <input type="text" value="Pão Naan" readOnly />
-                                <input type="text" placeholder="Adicionar" id="ingredientes" />
+                            <NewTag value="Pão"/>
+                            <NewTag isNew placeholder="Adicionar"/>
                             </div>
 
                         </div>
