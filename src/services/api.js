@@ -1,5 +1,5 @@
 import Axios from "axios"
 
 export const api = Axios.create({
-    baseURL: "http://localhost:3000/"
+    baseURL: "http://localhost:4000/"
 })

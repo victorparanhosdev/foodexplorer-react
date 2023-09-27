@@ -2,7 +2,31 @@ import { Container, Form } from "./styles"
 import { Input } from "../../components/Input"
 import FoodExplorer from "../../assets/Polygon1.svg"
 import { Link } from "react-router-dom"
+import { useAuth } from "../../hooks/auth"
+
+import { useState } from "react"
+
+
 export function SignIn(){
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const {signIn} = useAuth()
+
+    function handleSignIn(event){
+        event.preventDefault()
+        if(!email || !password){
+            return alert("Preencha todos os campos para logar o usuario")
+        }
+
+        signIn({email, password})
+ 
+    
+    }
+
+
+
+    
     return(
         <Container>
             <div>
@@ -12,9 +36,9 @@ export function SignIn(){
 
             <Form> 
                 <h1>Faça Login</h1>
-                <Input type="email" title="Email" placeholder="Exemplo: exemplo@exemplo.com.br"/>
-                <Input type="password" title="Senha" placeholder="No mínimo 6 caracteres"/>
-                <button type="submit">Entrar</button>
+                <Input onChange={e=> setEmail(e.target.value)} type="email" id="emailInput" title="Email" placeholder="Exemplo: exemplo@exemplo.com.br"/>
+                <Input onChange={e=> setPassword(e.target.value)} type="password" id="passwordInput" title="Senha" placeholder="No mínimo 6 caracteres"/>
+                <button onClick={e=> handleSignIn(e)} type="submit">Entrar</button>
                 <Link to="/cadastro">Criar uma conta</Link>
             </Form>
 
