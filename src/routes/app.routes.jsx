@@ -3,8 +3,13 @@ import { Home } from "../pages/Home"
 import { Details } from "../pages/Details"
 import { NewDish } from "../pages/NewDish"
 import { EditDish } from "../pages/EditDish"
+import { useAuth } from "../hooks/auth"
 export function AppRoutes(){
+
+    const {user} = useAuth()
+    
     return(
+        
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/details" element={<Details/>}/>
@@ -14,3 +19,4 @@ export function AppRoutes(){
 
     )
 }
+

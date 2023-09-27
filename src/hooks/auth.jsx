@@ -1,45 +1,58 @@
 import { createContext, useContext } from "react";
-import { api } from "../services/api"
+import { api } from "../services/api";
+import { useState, useEffect } from "react";
 
-const AuthContext = createContext({})
+const AuthContext = createContext({});
 
+function AuthProvider({ children }) {
+  const [data, setData] = useState(null);
 
-function AuthProvider({children}) {
+  async function signIn({ email, password }) {
+    try {
+      const usuario = await api.post("/sessions", { email, password });
 
+      const { token, user } = usuario.data;
 
-    async function signIn({email, password}){
+      const userData = {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        token,
+      };
 
-        try{
-            const usuario = await api.post("/sessions", {email, password})
-            console.log(usuario.data)
-        }catch(error){
-            if(error.response){
-                alert(error.response.data.message)
-            }else {
-                alert("Error no servidor", error)
-            }
-           
-        }
-
-    
+      setData(userData);
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      localStorage.setItem("@UserFoodExplorer:", JSON.stringify(userData));
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message);
+      } else {
+        alert("Error no servidor", error);
+      }
     }
+  }
 
-    return(
-       <AuthContext.Provider value={{signIn}}>
-        {children}
-       </AuthContext.Provider>
-    )
+  function signOut() {
+    localStorage.removeItem("@UserFoodExplorer:");
+    setData(null);
+  }
 
+  useEffect(() => {
+    const dados = JSON.parse(localStorage.getItem("@UserFoodExplorer:"));
+    api.defaults.headers.common["Authorization"] = `Bearer ${dados.token}`;
+    setData(dados);
+  }, []);
+
+  return (
+    <AuthContext.Provider value={{ signIn, user: data, signOut }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
-
-function useAuth(){
-    const context = useContext(AuthContext)
-    return context
+function useAuth() {
+  const context = useContext(AuthContext);
+  return context;
 }
 
-
-export {
-    AuthProvider,
-    useAuth
-}
+export { AuthProvider, useAuth };

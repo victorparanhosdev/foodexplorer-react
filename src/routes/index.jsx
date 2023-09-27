@@ -7,9 +7,10 @@ export function Routes(){
 
     const {user} = useAuth()
     
+    
     return(
         <BrowserRouter>
-        <AuthRoutes />
+            {user ? <AppRoutes /> : <AuthRoutes/>}
         </BrowserRouter>
     )
 }
