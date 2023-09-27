@@ -39,7 +39,11 @@ function AuthProvider({ children }) {
 
   useEffect(() => {
     const dados = JSON.parse(localStorage.getItem("@UserFoodExplorer:"));
-    api.defaults.headers.common["Authorization"] = `Bearer ${dados.token}`;
+
+    if(dados){
+      api.defaults.headers.common["Authorization"] = `Bearer ${dados.token}`;
+    }
+   
     setData(dados);
   }, []);
 
