@@ -17,6 +17,7 @@ function AuthProvider({ children }) {
         id: user.id,
         name: user.name,
         email: user.email,
+        isAdmin: user.isAdmin,
         token,
       };
 
@@ -27,7 +28,7 @@ function AuthProvider({ children }) {
       if (error.response) {
         alert(error.response.data.message);
       } else {
-        alert("Error no servidor", error);
+        alert("Não foi possivel Entrar")
       }
     }
   }
@@ -40,11 +41,12 @@ function AuthProvider({ children }) {
   useEffect(() => {
     const dados = JSON.parse(localStorage.getItem("@UserFoodExplorer:"));
 
-    if(dados){
+    if (dados) {
       api.defaults.headers.common["Authorization"] = `Bearer ${dados.token}`;
+      setData(dados);
     }
-   
-    setData(dados);
+
+
   }, []);
 
   return (

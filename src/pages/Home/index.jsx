@@ -16,6 +16,8 @@ export function Home() {
             <Header />
             <Banner />
             <Content>
+
+                
             <Article title="Refeições">
                 <Swiper className="card-principal" modules={[Navigation, EffectFade]} navigation slidesPerView={'auto'} spaceBetween={27}>
                     <SwiperSlide className="card">

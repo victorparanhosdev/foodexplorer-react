@@ -13,7 +13,7 @@ nav {
     width: min(112rem, 95%);
     margin: auto;
 
-button {
+button, a {
     border: none;
     background: transparent;
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
@@ -23,7 +23,8 @@ button {
     
 }
 
-.btn-pedido {
+.btn-pedido, .btn-newdish {
+    white-space: nowrap;
     background: ${({ theme }) => theme.COLORS.TINTS_TOMATO_100};
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
     font-weight: 400;
@@ -37,17 +38,24 @@ button {
 
 > div:nth-child(1) {
     display: flex;
-    align-items: center;
     gap: 1rem;
     img {
         width: 3rem;
         height: 3rem;
     }
     span {
+        white-space: nowrap;
         font-family: "Roboto", sans-serif;
         font-weight: 700;
         font-size: 2.4rem;
         color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    }
+    .admin {
+        color: ${({theme})=> theme.COLORS.TINTS_CAKE_200};
+        font-family: "Roboto", sans-serif;
+        font-size: 1.2rem;
+        font-weight: 400;
+        text-align: end;
     }
 }
 
