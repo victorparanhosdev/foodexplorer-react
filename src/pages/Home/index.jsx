@@ -19,14 +19,12 @@ export function Home() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    async function handleDish() {
-      try {
+    async function fechDish() {
         const response = await api.get(`/dish/?title=${""}&ingredients=${[]}`);
         setData(response.data);
-      } catch (error) {}
     }
 
-    handleDish();
+    fechDish();
   }, []);
 
   return (
@@ -46,9 +44,9 @@ export function Home() {
               {data
                 .filter((item) => item.category === "Refeições")
                 .map((item, index) => (
-                  <SwiperSlide className="card">
+                  <SwiperSlide key={String(item.id)} className="card">
                     <div className="dish">
-                      <img src="/src/assets/Mask group-1.png" alt="" />
+                      <img src={item.imgurl} alt="" />
                       <FiHeart size={24} />
                     </div>
                     <h1>{item.name}</h1>
@@ -60,7 +58,7 @@ export function Home() {
             </Swiper>
           </Article>
         )}
-        {data.some((item) => item.category === "Sobremesas") && (
+          {data.some((item) => item.category === "Sobremesas") && (
           <Article title="Sobremesas">
             <Swiper
               className="card-principal"
@@ -72,9 +70,9 @@ export function Home() {
               {data
                 .filter((item) => item.category === "Sobremesas")
                 .map((item, index) => (
-                  <SwiperSlide className="card">
+                  <SwiperSlide key={String(item.id)} className="card">
                     <div className="dish">
-                      <img src="/src/assets/Mask group-1.png" alt="" />
+                      <img src={item.imgurl} alt="" />
                       <FiHeart size={24} />
                     </div>
                     <h1>{item.name}</h1>
@@ -86,7 +84,7 @@ export function Home() {
             </Swiper>
           </Article>
         )}
-        {data.some((item) => item.category === "Bebidas") && (
+          {data.some((item) => item.category === "Bebidas") && (
           <Article title="Bebidas">
             <Swiper
               className="card-principal"
@@ -98,9 +96,9 @@ export function Home() {
               {data
                 .filter((item) => item.category === "Bebidas")
                 .map((item, index) => (
-                  <SwiperSlide className="card">
+                  <SwiperSlide key={String(item.id)} className="card">
                     <div className="dish">
-                      <img src="/src/assets/Mask group-1.png" alt="" />
+                      <img src={item.imgurl} alt="" />
                       <FiHeart size={24} />
                     </div>
                     <h1>{item.name}</h1>
@@ -112,6 +110,8 @@ export function Home() {
             </Swiper>
           </Article>
         )}
+
+
       </Content>
       <Footer />
     </Container>

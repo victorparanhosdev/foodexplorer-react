@@ -18,7 +18,7 @@ export function NewDish() {
     const [description, setDescription] = useState("")
     const [ingredients, setIngredients] = useState([])
     const [newingredients, setNewIngredients] = useState("")
-
+   
 
     const navigate = useNavigate()
 
@@ -60,10 +60,7 @@ export function NewDish() {
 
     async function handleNewDish(event) {
         event.preventDefault()
-
-        if (!file) {
-            return alert(`Selecione uma imagem para o Prato`)
-        }
+        
         if (!name) {
             return alert("Preencha o campo Nome para seguir com o cadastro")
         }
@@ -83,6 +80,7 @@ export function NewDish() {
         }
 
         try {
+           
             await api.post("/dish", { imgurl: file, name, category, price, description, ingredients })
             navigate("/")
             alert(`${transformarParaSingular(category)} adicionado com sucesso`)
