@@ -5,16 +5,16 @@ import { Routes } from './routes/index.jsx'
 import { ThemeProvider } from 'styled-components'
 import theme from "./styles/theme.js"
 import { AuthProvider } from "./hooks/auth.jsx"
-
+import { DishProvider } from './hooks/dish.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <AuthProvider>
-
-        <Routes />
-
+      <DishProvider>
+      <Routes />
+      </DishProvider>
       </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,

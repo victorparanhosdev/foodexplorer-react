@@ -121,7 +121,7 @@ export function NewDish() {
                     <div>
                         <div>
                             <span>Imagem do prato</span>
-                            <label htmlFor="form-controls"><LuUpload size={24} />Selecione imagem</label>
+                            <label htmlFor="form-controls"><LuUpload size={24} />{file ? file : "Selecione imagem"}</label>
                             <input onChange={e => setFile(e.target.files[0].name)} type="file" id="form-controls" />
                         </div>
 

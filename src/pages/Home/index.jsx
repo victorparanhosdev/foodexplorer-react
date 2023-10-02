@@ -7,17 +7,34 @@ import { Navigation, EffectFade } from 'swiper/modules';
 import { FiHeart } from "react-icons/fi"
 import { Footer } from "../../components/Footer";
 import { Button } from "../../components/Button";
+import { useAuth } from "../../hooks/auth";
 import 'swiper/css';
 import 'swiper/css/bundle';
 import 'swiper/css/effect-fade';
+
+import { api } from "../../services/api";
+
 export function Home() {
+    const {user} = useAuth()
+ 
+    async function handleDish(){
+        try{
+            await api.get("/dish")
+
+
+        }catch(error){
+
+        }
+
+        
+    }
+
     return (
         <Container>
             <Header />
             <Banner />
             <Content>
 
-                
             <Article title="Refeições">
                 <Swiper className="card-principal" modules={[Navigation, EffectFade]} navigation slidesPerView={'auto'} spaceBetween={27}>
                     <SwiperSlide className="card">
@@ -71,6 +88,8 @@ export function Home() {
                     </SwiperSlide>
                 </Swiper>
             </Article>
+
+
             <Article title="Sobremesas">
                 <Swiper className="card-principal" modules={[Navigation, EffectFade]} navigation slidesPerView={'auto'} spaceBetween={27}>
                     <SwiperSlide className="card">
