@@ -41,9 +41,7 @@ export function Home() {
               slidesPerView={"auto"}
               spaceBetween={27}
             >
-              {data
-                .filter((item) => item.category === "Refeições")
-                .map((item, index) => (
+              {data.filter((item) => item.category === "Refeições").map((item, index) => (
                   <SwiperSlide key={String(item.id)} className="card">
                     <div className="dish">
                       <img src={item.imgurl} alt="" />
