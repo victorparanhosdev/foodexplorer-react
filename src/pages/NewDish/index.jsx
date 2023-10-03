@@ -27,6 +27,12 @@ export function NewDish() {
     setFile(fileEvent);
   }
 
+  function handleImage() {
+    const formData = new FormData();
+    formData.append("imgurl", file);
+    return formData;
+  }
+
   function handleClickNewIngredients() {
     if (newingredients === "") {
       return alert("Não aceitamos ingrediente vazio");
@@ -88,15 +94,18 @@ export function NewDish() {
     }
 
     try {
-      await api.post("/dish", {
-        name,
-        category,
-        price,
-        description,
-        ingredients,
-      });
+      await api.post("/dish", {name, category, price, description, ingredients}).then(response=> {
+        
+        if (file) {
+          const imageFormData = handleImage();
+          api.patch(`/dish/${response.data.id_newdish}`, imageFormData)
+
+        }}).catch(error => console.error(error))
+
       navigate("/");
       alert(`${transformarParaSingular(category)} adicionado com sucesso`);
+
+
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message);
