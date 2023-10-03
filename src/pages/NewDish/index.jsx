@@ -25,13 +25,9 @@ export function NewDish() {
     const fileEvent = event.target.files[0];
     setFileName(fileEvent.name);
     setFile(fileEvent);
+    
   }
 
-  function handleImage() {
-    const formData = new FormData();
-    formData.append("imgurl", file);
-    return formData;
-  }
 
   function handleClickNewIngredients() {
     if (newingredients === "") {
@@ -67,6 +63,10 @@ export function NewDish() {
   async function handleNewDish(event) {
     event.preventDefault();
 
+
+    if(!file) {
+      return alert("Selecione uma imagem para cadastrar o Prato")
+    }
     if (!name) {
       return alert("Preencha o campo Nome para seguir com o cadastro");
     }
@@ -94,17 +94,30 @@ export function NewDish() {
     }
 
     try {
-      await api.post("/dish", {name, category, price, description, ingredients}).then(response=> {
-        
-        if (file) {
-          const imageFormData = handleImage();
-          api.patch(`/dish/${response.data.id_newdish}`, imageFormData)
 
-        }}).catch(error => console.error(error))
+      const dishData = {
+        name,
+        category,
+        price,
+        description,
+        ingredients,
+      };
+    
+      const formData = new FormData();
+      
+      if (file) {
+        formData.append("uploadImg", file);
 
+      }
+   
+    
+      formData.append("dishData", JSON.stringify(dishData));
+    
+      await api.post("/dish", formData);
+    
+      alert("Prato Adicionado com Sucesso!!");
       navigate("/");
-      alert(`${transformarParaSingular(category)} adicionado com sucesso`);
-
+    
 
     } catch (error) {
       if (error.response) {
@@ -113,6 +126,8 @@ export function NewDish() {
         alert("Não foi possivel Adicionar o Prato");
       }
     }
+
+
   }
 
   return (
