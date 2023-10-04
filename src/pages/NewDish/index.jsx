@@ -109,8 +109,7 @@ export function NewDish() {
         formData.append("uploadImg", file);
 
       }
-   
-    
+  
       formData.append("dishData", JSON.stringify(dishData));
     
       await api.post("/dish", formData);
