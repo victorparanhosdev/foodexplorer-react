@@ -17,6 +17,7 @@ import { api } from "../../services/api";
 export function Home() {
   const { user } = useAuth();
   const [data, setData] = useState([]);
+  const localhostImg = `${api.defaults.baseURL}files/`
 
   useEffect(() => {
     async function fechDish() {
@@ -24,8 +25,12 @@ export function Home() {
         setData(response.data);
     }
 
+
     fechDish();
   }, []);
+
+
+
 
   return (
     <Container>
@@ -42,15 +47,21 @@ export function Home() {
               spaceBetween={27}
             >
               {data.filter((item) => item.category === "Refeições").map((item, index) => (
+
+
                   <SwiperSlide key={String(item.id)} className="card">
                     <div className="dish">
-                      <img src={item.imgurl} alt="" />
+                      <img src={`${localhostImg}${item.imgurl}`} alt="" />
+
+         
                       <FiHeart size={24} />
                     </div>
                     <h1>{item.name}</h1>
                     <p>{item.description}</p>
-                    <span>{item.price}</span>
-                    <Button />
+                    <span>R${item.price}</span>
+                   {user.isAdmin ? null: <Button />} 
+
+
                   </SwiperSlide>
                 ))}
             </Swiper>
@@ -70,13 +81,13 @@ export function Home() {
                 .map((item, index) => (
                   <SwiperSlide key={String(item.id)} className="card">
                     <div className="dish">
-                      <img src={item.imgurl} alt="" />
+                      <img src={`${localhostImg}${item.imgurl}`} alt="" />
                       <FiHeart size={24} />
                     </div>
                     <h1>{item.name}</h1>
                     <p>{item.description}</p>
-                    <span>{item.price}</span>
-                    <Button />
+                    <span>R${item.price}</span>
+                    {user.isAdmin ? null: <Button />} 
                   </SwiperSlide>
                 ))}
             </Swiper>
@@ -96,13 +107,13 @@ export function Home() {
                 .map((item, index) => (
                   <SwiperSlide key={String(item.id)} className="card">
                     <div className="dish">
-                      <img src={item.imgurl} alt="" />
+                      <img src={`${localhostImg}${item.imgurl}`} alt="" />
                       <FiHeart size={24} />
                     </div>
                     <h1>{item.name}</h1>
                     <p>{item.description}</p>
-                    <span>{item.price}</span>
-                    <Button />
+                    <span>R${item.price}</span>
+                    {user.isAdmin ? null: <Button />} 
                   </SwiperSlide>
                 ))}
             </Swiper>

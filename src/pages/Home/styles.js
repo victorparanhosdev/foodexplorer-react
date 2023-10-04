@@ -73,7 +73,11 @@ export const Content = styled.section`
     font-family: 'Roboto', sans-serif;
     font-size: 1.4rem;
     font-weight: 400;
-    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
     }
     > span {
         color: ${({theme})=> theme.COLORS.TINTS_CAKE_200};
