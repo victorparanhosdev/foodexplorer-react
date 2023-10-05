@@ -30,24 +30,47 @@ export const Content = styled.section`
 
 
 }
-
-
 .card {
-    color: ${({ theme }) => theme.COLORS.LIGHT_300};
+    position: relative;
     background: ${({ theme }) => theme.COLORS.DARK_200};
+
     width: 30.4rem;
-    height: 46.2rem;
+    min-height: 46.2rem;
+    height: auto;
+  
     border-radius: 0.8rem;
-    padding: 2.4rem;
+    padding: 5rem 2.4rem 2.4rem;
+
+   
+
+
+
+    .btn-fav-edit {
+        position: absolute;
+        top: 1.5rem;
+        right: 2.5rem;
+        border: none;
+        background: transparent;
+        color: white;
+        display: flex;
+    }
+
+}
+
+.showdish {
+    color: ${({ theme }) => theme.COLORS.LIGHT_300};
     display: grid;
-    gap:1.5rem;
-    align-content: space-around;
+    gap: 1.5rem;
     place-items: center;
+
+    border: none;
+    background: transparent;
 
     div.dish {
     width: 17.6rem;
     height: 17.6rem;
     margin: auto;
+  
 
     svg {
         position: absolute;
@@ -55,11 +78,13 @@ export const Content = styled.section`
         right: 1.5rem;
         color: ${({theme})=> theme.COLORS.LIGHT_300};
         cursor: pointer;
+
     }
     
     img {
         width: 100%;
     }
+
     }
 
 
@@ -69,15 +94,17 @@ export const Content = styled.section`
     text-align: center;
 
     }
+
     > p{
     font-family: 'Roboto', sans-serif;
     font-size: 1.4rem;
     font-weight: 400;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow: hidden;
+    text-align: start;
     }
     > span {
         color: ${({theme})=> theme.COLORS.TINTS_CAKE_200};
@@ -89,6 +116,7 @@ export const Content = styled.section`
     > div:last-child {
         display: flex;
         gap: 1.6rem;
+
         > div {
             display: flex;
 

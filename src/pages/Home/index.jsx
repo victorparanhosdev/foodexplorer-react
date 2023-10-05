@@ -4,7 +4,8 @@ import { Banner } from "../../components/Banner";
 import { Article } from "../../components/Article";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, EffectFade } from "swiper/modules";
-import { FiHeart } from "react-icons/fi";
+
+import {AiOutlineHeart, AiFillHeart} from "react-icons/ai"
 import { Footer } from "../../components/Footer";
 import { Button } from "../../components/Button";
 import { useAuth } from "../../hooks/auth";
@@ -13,7 +14,7 @@ import "swiper/css/bundle";
 import "swiper/css/effect-fade";
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
-
+import {PiPencilSimpleBold} from "react-icons/pi"
 export function Home() {
   const { user } = useAuth();
   const [data, setData] = useState([]);
@@ -50,18 +51,16 @@ export function Home() {
 
 
                   <SwiperSlide key={String(item.id)} className="card">
+                    <button className="btn-fav-edit"><AiFillHeart size={24} /><AiOutlineHeart size={24} /><PiPencilSimpleBold size={24}/></button>               
+                    <button className="showdish">
                     <div className="dish">
                       <img src={`${localhostImg}${item.imgurl}`} alt="" />
-
-         
-                      <FiHeart size={24} />
                     </div>
                     <h1>{item.name}</h1>
                     <p>{item.description}</p>
                     <span>R${item.price}</span>
-                   {user.isAdmin ? null: <Button />} 
-
-
+                    </button>
+                    {user.isAdmin ? null: <Button />} 
                   </SwiperSlide>
                 ))}
             </Swiper>
@@ -80,15 +79,17 @@ export function Home() {
                 .filter((item) => item.category === "Sobremesas")
                 .map((item, index) => (
                   <SwiperSlide key={String(item.id)} className="card">
-                    <div className="dish">
-                      <img src={`${localhostImg}${item.imgurl}`} alt="" />
-                      <FiHeart size={24} />
-                    </div>
-                    <h1>{item.name}</h1>
-                    <p>{item.description}</p>
-                    <span>R${item.price}</span>
-                    {user.isAdmin ? null: <Button />} 
-                  </SwiperSlide>
+                  <button className="btn-fav-edit"><AiFillHeart size={24} /><AiOutlineHeart size={24} /><PiPencilSimpleBold size={24}/></button>               
+                  <button className="showdish">
+                  <div className="dish">
+                    <img src={`${localhostImg}${item.imgurl}`} alt="" />
+                  </div>
+                  <h1>{item.name}</h1>
+                  <p>{item.description}</p>
+                  <span>R${item.price}</span>
+                  </button>
+                  {user.isAdmin ? null: <Button />} 
+                </SwiperSlide>
                 ))}
             </Swiper>
           </Article>
@@ -106,15 +107,17 @@ export function Home() {
                 .filter((item) => item.category === "Bebidas")
                 .map((item, index) => (
                   <SwiperSlide key={String(item.id)} className="card">
-                    <div className="dish">
-                      <img src={`${localhostImg}${item.imgurl}`} alt="" />
-                      <FiHeart size={24} />
-                    </div>
-                    <h1>{item.name}</h1>
-                    <p>{item.description}</p>
-                    <span>R${item.price}</span>
-                    {user.isAdmin ? null: <Button />} 
-                  </SwiperSlide>
+                  <button className="btn-fav-edit"><AiFillHeart size={24} /><AiOutlineHeart size={24} /><PiPencilSimpleBold size={24}/></button>               
+                  <button className="showdish">
+                  <div className="dish">
+                    <img src={`${localhostImg}${item.imgurl}`} alt="" />
+                  </div>
+                  <h1>{item.name}</h1>
+                  <p>{item.description}</p>
+                  <span>R${item.price}</span>
+                  </button>
+                  {user.isAdmin ? null: <Button />} 
+                </SwiperSlide>
                 ))}
             </Swiper>
           </Article>
