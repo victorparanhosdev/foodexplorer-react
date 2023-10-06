@@ -33,7 +33,8 @@ export const Content = styled.section`
 .card {
     position: relative;
     background: ${({ theme }) => theme.COLORS.DARK_200};
-
+    display: grid;
+    place-content: center;
     width: 30.4rem;
     min-height: 46.2rem;
     height: auto;

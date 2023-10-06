@@ -157,10 +157,10 @@ export const Content = styled.section`
         font-weight: 400;
       }
 
-      button[type="button"] {
+      button:nth-child(1){
         background: ${({ theme }) => theme.COLORS.DARK_800};
       }
-      button[type="submit"] {
+      button:nth-child(2) {
         background: ${({ theme }) => theme.COLORS.TINTS_TOMATO_400};
       }
     }

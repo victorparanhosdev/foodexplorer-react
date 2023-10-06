@@ -9,21 +9,25 @@ import { NewTag } from "../../components/NewTag";
 import { api } from "../../services/api";
 export function EditDish() {
   const navigate = useNavigate();
+  const params = useParams();
+
   const [data, setData] = useState("");
   const [stateingredients, setIngredients] = useState([]);
   const [newingredients, setNewIngredients] = useState("");
 
+  const [file, setFile] = useState("");
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+
   function removeItem(name) {
-
-    const updated = stateingredients.filter((ingredit) => ingredit !== name );
-
+    const updated = stateingredients.filter((ingredit) => ingredit !== name);
     setIngredients(updated);
   }
-
-  function SalvedEdit(){
-
+  function SalvedEdit() {
+    console.log(file, name, category, stateingredients, price, description)
   }
-  
   function handleClickNewIngredients() {
     if (newingredients === "") {
       return alert("Não aceitamos ingrediente vazio");
@@ -33,14 +37,10 @@ export function EditDish() {
     document.querySelector(".btn-add").value = "";
     setNewIngredients("")
   }
-
-  
   function ButtonBack(event) {
     event.preventDefault();
     navigate(-1);
   }
-
-  const params = useParams();
 
   useEffect(() => {
     async function fetchEditDish() {
@@ -52,9 +52,7 @@ export function EditDish() {
     fetchEditDish();
   }, []);
 
-  useEffect(()=> {
-   
-  }, [stateingredients])
+
 
   return (
     <Container>
@@ -79,12 +77,12 @@ export function EditDish() {
                   <LuUpload size={24} />
                   {data.dish.imgurl ? data.dish.imgurl : "Selecione imagem"}
                 </label>
-                <input type="file" id="form-controls" />
+                <input onChange={e => setFile(e.target.value)} type="file" id="form-controls" />
               </div>
 
               <div>
                 <span>Nome</span>
-                <input
+                <input onChange={e => setName(e.target.value)}
                   type="text"
                   defaultValue={data.dish.name}
                   placeholder="Ex.: Salada Ceasar"
@@ -93,7 +91,7 @@ export function EditDish() {
 
               <div>
                 <span>Categoria</span>
-                <select name="" id="" defaultValue={data.dish.category}>
+                <select onChange={e => setCategory(e.target.value)} name="" id="" defaultValue={data.dish.category}>
                   <option value="Refeições">Refeições</option>
                   <option value="Sobremesas">Sobremesas</option>
                   <option value="Bebidas">Bebidas</option>
@@ -112,7 +110,7 @@ export function EditDish() {
                       value={name}
                     />
                   ))}
-                  {}
+                  { }
 
                   <NewTag
                     onChange={(e) => setNewIngredients(e.target.value)}
@@ -125,14 +123,14 @@ export function EditDish() {
               </div>
               <div>
                 <span>Preço</span>
-                <input type="number" defaultValue={data.dish.price} placeholder="R$00.00" />
+                <input onChange={(e) => setPrice(e.target.value)} type="number" defaultValue={data.dish.price} placeholder="R$00.00" />
               </div>
             </div>
 
             <div>
               <span>Descrição</span>
-              <textarea
-              defaultValue={data.dish.description}
+              <textarea onChange={(e) => setDescription(e.target.value)}
+                defaultValue={data.dish.description}
                 placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
                 name=""
                 id=""
@@ -143,7 +141,7 @@ export function EditDish() {
 
             <div>
               <button type="button">Excluir prato</button>
-              <button onClick={SalvedEdit} type="submit">Salvar Alterações</button>
+              <button onClick={SalvedEdit} type="button">Salvar Alterações</button>
             </div>
           </form>
         </Content>
