@@ -4,7 +4,7 @@ import { Banner } from "../../components/Banner";
 import { Article } from "../../components/Article";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, EffectFade } from "swiper/modules";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {AiOutlineHeart, AiFillHeart} from "react-icons/ai"
 import { Footer } from "../../components/Footer";
 import { Button } from "../../components/Button";
@@ -17,6 +17,7 @@ import { api } from "../../services/api";
 import {PiPencilSimpleBold} from "react-icons/pi"
 export function Home() {
   const navigate = useNavigate()
+
   const { user } = useAuth();
   const [data, setData] = useState([]);
   const [favoriteItems, setFavoriteItems] = useState([]);
@@ -39,6 +40,9 @@ export function Home() {
   
 
   }, []);
+  function buttonEditDish(id){
+    navigate(`/editdish/${id}`)
+  }
 
   function handleDetails(id){
     navigate(`/details/${id}`)
@@ -81,7 +85,7 @@ export function Home() {
             >
               {data.filter((item) => item.category === "Refeições").map((item, index) => (
                   <SwiperSlide key={String(item.id)} className="card">
-                   {user && user.isAdmin ? <button className="btn-fav-edit"><PiPencilSimpleBold size={30}/></button> : 
+                   {user && user.isAdmin ? <button onClick={() => buttonEditDish(item.id)}className="btn-fav-edit"><PiPencilSimpleBold size={30}/></button> : 
                    <button onClick={()=> toggleHeart(item)} className="btn-fav-edit">{favoriteItems.some((favItem) => favItem.id === item.id) ? <AiFillHeart size={30} /> : <AiOutlineHeart size={30} />}</button>}   
                   
                     <button onClick={()=> handleDetails(item.id)} className="showdish">
@@ -111,11 +115,10 @@ export function Home() {
                 .filter((item) => item.category === "Sobremesas")
                 .map((item, index) => (
                   <SwiperSlide key={String(item.id)} className="card">
-                  {user && user.isAdmin ? <button className="btn-fav-edit"><PiPencilSimpleBold size={30}/></button> : 
+                  {user && user.isAdmin ? <button onClick={() => buttonEditDish(item.id)} className="btn-fav-edit"><PiPencilSimpleBold size={30}/></button> : 
                   <button onClick={()=> toggleHeart(item)} className="btn-fav-edit">{favoriteItems.some((favItem) => favItem.id === item.id) ? <AiFillHeart size={30} /> : <AiOutlineHeart size={30} />}</button>}   
                  
-
-                   <button className="showdish">
+                   <button onClick={()=> handleDetails(item.id)} className="showdish">
                    <div className="dish">
                      <img src={`${localhostImg}${item.imgurl}`} alt="" />
                    </div>
@@ -142,11 +145,10 @@ export function Home() {
                 .filter((item) => item.category === "Bebidas")
                 .map((item, index) => (
                   <SwiperSlide key={String(item.id)} className="card">
-                  {user && user.isAdmin ? <button className="btn-fav-edit"><PiPencilSimpleBold size={30}/></button> : 
+                  {user && user.isAdmin ? <button onClick={() => buttonEditDish(item.id)} className="btn-fav-edit"><PiPencilSimpleBold size={30}/></button> : 
                   <button onClick={()=> toggleHeart(item)} className="btn-fav-edit">{favoriteItems.some((favItem) => favItem.id === item.id) ? <AiFillHeart size={30} /> : <AiOutlineHeart size={30} />}</button>}   
                  
-
-                   <button className="showdish">
+                   <button onClick={()=> handleDetails(item.id)} className="showdish">
                    <div className="dish">
                      <img src={`${localhostImg}${item.imgurl}`} alt="" />
                    </div>

@@ -14,17 +14,21 @@ export function Details() {
 
   const navigate = useNavigate()
 
-  const [data, setData] = useState([])
+  const [data, setData] = useState("")
+
+
   function ButtonBack(event){
     event.preventDefault()
     navigate(-1)
  
   }
+
   useEffect(()=> {
     async function fetchDetails(){
    
       const response = await api.get(`/dish/${params.id}`)
       setData(response.data)
+      
     }
 
     fetchDetails()
@@ -35,7 +39,7 @@ export function Details() {
   return (
     <Container>
       <Header />
-      <Content>
+      {data && <Content>
         <div className="box-btn-back">
           <button type="button" onClick={(e)=> ButtonBack(e)}>
             <MdArrowBackIos />
@@ -45,22 +49,22 @@ export function Details() {
 
         <div className="dish">
           <div>
-            <img src="/src/assets/Mask group-1.png" alt="" />
+            <img src={`${api.defaults.baseURL}files/${data.dish.imgurl}`} alt="" />
           </div>
 
           <div>
-            <h1>Salada Ravanello</h1>
+            <h1>{data.dish.name}</h1>
             <p>
-              Rabanetes, folhas verdes e molho agridoce salpicados com gergelim.
-              O pão naan dá um toque especial.
+              {data.dish.description}
             </p>
-            <div className="tags-food">
-              <span>afalce</span>
-              <span>cebola</span>
-              <span>pão</span>
-              <span>pepino</span>
-              <span>tomate</span>
-            </div>
+            {(data.ingredients.length > 0) && <div className="tags-food">
+             {data.ingredients.map(item=> {
+              return (
+                <span key={String(item.id)}>{item.name}</span>
+              )
+             })}
+
+            </div>}
 
             <div className="box-incluir">
               <div>
@@ -78,7 +82,8 @@ export function Details() {
             </div>
           </div>
         </div>
-      </Content>
+      </Content>}
+
       <Footer />
     </Container>
   );
