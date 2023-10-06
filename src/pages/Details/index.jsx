@@ -3,16 +3,35 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import { MdArrowBackIos } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
+
 
 export function Details() {
 
+  const params = useParams()
+
   const navigate = useNavigate()
+
+  const [data, setData] = useState([])
   function ButtonBack(event){
     event.preventDefault()
     navigate(-1)
  
   }
+  useEffect(()=> {
+    async function fetchDetails(){
+   
+      const response = await api.get(`/dish/${params.id}`)
+      setData(response.data)
+    }
+
+    fetchDetails()
+
+  }, [])
+
+
   return (
     <Container>
       <Header />

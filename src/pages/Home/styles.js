@@ -37,9 +37,9 @@ export const Content = styled.section`
     width: 30.4rem;
     min-height: 46.2rem;
     height: auto;
-  
+    z-index: 0;
     border-radius: 0.8rem;
-    padding: 5rem 2.4rem 2.4rem;
+    padding: 2.4rem;
 
    
 
@@ -48,11 +48,13 @@ export const Content = styled.section`
     .btn-fav-edit {
         position: absolute;
         top: 1.5rem;
-        right: 2.5rem;
+        right: 1.5rem;
         border: none;
         background: transparent;
         color: white;
         display: flex;
+        z-index: 1;
+        padding: 0.5rem;
     }
 
 }

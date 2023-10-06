@@ -35,6 +35,7 @@ function AuthProvider({ children }) {
 
   function signOut() {
     localStorage.removeItem("@UserFoodExplorer:");
+    localStorage.removeItem("@FavoritesFoodExplorer");
     setData(null);
   }
 
