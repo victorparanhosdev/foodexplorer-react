@@ -23,9 +23,8 @@ export function Home() {
   const [favoriteItems, setFavoriteItems] = useState([]);
   const [infoTitle, setinfoTitle] = useState("");
   const [quantity, setQuantity] = useState(1);
-  
-
-
+  const [listPrice, setlistPrice] = useState([])
+ 
   const localhostImg = `${api.defaults.baseURL}files/`
 
 
@@ -85,7 +84,37 @@ export function Home() {
     setinfoTitle(term);
 
   }
-  function infoQuantity(valor) {
+
+  function infoQuantity(valor, item) {
+    const { price, id } = item;
+ 
+
+    const Dados={id, price}
+
+    const ListFilter = listPrice.find(dado => dado.id === id)
+
+    if(!ListFilter){
+      setlistPrice(PrevState => [...PrevState, Dados])
+      
+    }else {
+     
+      const newListPrice = listPrice.map(dado => {
+        if (dado.id === id) {
+          return { ...dado, price: dado.price * valor };
+        }
+        return dado;
+      });
+
+      
+
+      console.log(newListPrice)
+    }
+  
+
+
+
+    //console.log(updatedPrice, id)
+
     setQuantity(valor);
   }
 
@@ -116,9 +145,9 @@ export function Home() {
                     </div>
                     <h1>{item.name}</h1>
                     <p>{item.description}</p>
-                    <span>R${(item.price) * (quantity)}</span>
+                    <span>R${(item.price) * quantity}</span>
                   </button>
-                  {user.isAdmin ? null : <Button infoValue={quantity} onInfoValueChange={infoQuantity}/>}
+                  {user.isAdmin ? null : <Button infoValue={quantity} infoItem={item} onInfoValueChange={infoQuantity}/>}
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -148,7 +177,7 @@ export function Home() {
                     <p>{item.description}</p>
                     <span>R${(item.price) * (quantity)}</span>
                   </button>
-                  {user.isAdmin ? null : <Button infoValue={quantity} onInfoValueChange={infoQuantity}/>}
+                  {user.isAdmin ? null : <Button infoValue={quantity} infoItem={item} onInfoValueChange={infoQuantity}/>}
                 </SwiperSlide>
                 ))}
             </Swiper>
@@ -178,7 +207,7 @@ export function Home() {
                     <p>{item.description}</p>
                     <span>R${(item.price) * (quantity)}</span>
                   </button>
-                  {user.isAdmin ? null : <Button infoValue={quantity} onInfoValueChange={infoQuantity}/>}
+                  {user.isAdmin ? null : <Button infoValue={quantity} infoItem={item} onInfoValueChange={infoQuantity}/>}
                 </SwiperSlide>
                 ))}
             </Swiper>
