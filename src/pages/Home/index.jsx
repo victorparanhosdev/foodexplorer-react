@@ -22,6 +22,8 @@ export function Home() {
   const [data, setData] = useState([]);
   const [favoriteItems, setFavoriteItems] = useState([]);
   const [infoTitle, setinfoTitle] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  
 
 
   const localhostImg = `${api.defaults.baseURL}files/`
@@ -83,7 +85,11 @@ export function Home() {
     setinfoTitle(term);
 
   }
+  function infoQuantity(valor) {
+    setQuantity(valor);
+  }
 
+ 
 
   return (
     <Container>
@@ -110,9 +116,9 @@ export function Home() {
                     </div>
                     <h1>{item.name}</h1>
                     <p>{item.description}</p>
-                    <span>R${item.price}</span>
+                    <span>R${(item.price) * (quantity)}</span>
                   </button>
-                  {user.isAdmin ? null : <Button />}
+                  {user.isAdmin ? null : <Button infoValue={quantity} onInfoValueChange={infoQuantity}/>}
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -131,19 +137,19 @@ export function Home() {
                 .filter((item) => item.category === "Sobremesas")
                 .map((item, index) => (
                   <SwiperSlide key={String(item.id)} className="card">
-                    {user && user.isAdmin ? <button onClick={() => buttonEditDish(item.id)} className="btn-fav-edit"><PiPencilSimpleBold size={30} /></button> :
-                      <button onClick={() => toggleHeart(item)} className="btn-fav-edit">{favoriteItems.some((favItem) => favItem.id === item.id) ? <AiFillHeart size={30} /> : <AiOutlineHeart size={30} />}</button>}
+                  {user && user.isAdmin ? <button onClick={() => buttonEditDish(item.id)} className="btn-fav-edit"><PiPencilSimpleBold size={30} /></button> :
+                    <button onClick={() => toggleHeart(item)} className="btn-fav-edit">{favoriteItems.some((favItem) => favItem.id === item.id) ? <AiFillHeart size={30} /> : <AiOutlineHeart size={30} />}</button>}
 
-                    <button onClick={() => handleDetails(item.id)} className="showdish">
-                      <div className="dish">
-                        <img src={`${localhostImg}${item.imgurl}`} alt="" />
-                      </div>
-                      <h1>{item.name}</h1>
-                      <p>{item.description}</p>
-                      <span>R${item.price}</span>
-                    </button>
-                    {user.isAdmin ? null : <Button />}
-                  </SwiperSlide>
+                  <button onClick={() => handleDetails(item.id)} className="showdish">
+                    <div className="dish">
+                      <img src={`${localhostImg}${item.imgurl}`} alt="" />
+                    </div>
+                    <h1>{item.name}</h1>
+                    <p>{item.description}</p>
+                    <span>R${(item.price) * (quantity)}</span>
+                  </button>
+                  {user.isAdmin ? null : <Button infoValue={quantity} onInfoValueChange={infoQuantity}/>}
+                </SwiperSlide>
                 ))}
             </Swiper>
           </Article>
@@ -161,19 +167,19 @@ export function Home() {
                 .filter((item) => item.category === "Bebidas")
                 .map((item, index) => (
                   <SwiperSlide key={String(item.id)} className="card">
-                    {user && user.isAdmin ? <button onClick={() => buttonEditDish(item.id)} className="btn-fav-edit"><PiPencilSimpleBold size={30} /></button> :
-                      <button onClick={() => toggleHeart(item)} className="btn-fav-edit">{favoriteItems.some((favItem) => favItem.id === item.id) ? <AiFillHeart size={30} /> : <AiOutlineHeart size={30} />}</button>}
+                  {user && user.isAdmin ? <button onClick={() => buttonEditDish(item.id)} className="btn-fav-edit"><PiPencilSimpleBold size={30} /></button> :
+                    <button onClick={() => toggleHeart(item)} className="btn-fav-edit">{favoriteItems.some((favItem) => favItem.id === item.id) ? <AiFillHeart size={30} /> : <AiOutlineHeart size={30} />}</button>}
 
-                    <button onClick={() => handleDetails(item.id)} className="showdish">
-                      <div className="dish">
-                        <img src={`${localhostImg}${item.imgurl}`} alt="" />
-                      </div>
-                      <h1>{item.name}</h1>
-                      <p>{item.description}</p>
-                      <span>R${item.price}</span>
-                    </button>
-                    {user.isAdmin ? null : <Button />}
-                  </SwiperSlide>
+                  <button onClick={() => handleDetails(item.id)} className="showdish">
+                    <div className="dish">
+                      <img src={`${localhostImg}${item.imgurl}`} alt="" />
+                    </div>
+                    <h1>{item.name}</h1>
+                    <p>{item.description}</p>
+                    <span>R${(item.price) * (quantity)}</span>
+                  </button>
+                  {user.isAdmin ? null : <Button infoValue={quantity} onInfoValueChange={infoQuantity}/>}
+                </SwiperSlide>
                 ))}
             </Swiper>
           </Article>
