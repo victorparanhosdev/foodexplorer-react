@@ -25,8 +25,26 @@ export function EditDish() {
     const updated = stateingredients.filter((ingredit) => ingredit !== name);
     setIngredients(updated);
   }
-  function SalvedEdit() {
+  async function SalvedEdit() {
+
     console.log(file, name, category, stateingredients, price, description)
+
+  }
+  async function ExcluirEdit(){
+    const isOk = confirm("Tem certeza que deseja excluir ?")
+    if(isOk){
+      await api.delete(`/dish/${params.id}`).then(()=> {
+        alert("Prato excluido com sucesso")
+        navigate("/")
+      }).catch(error => { 
+        if(error.response){
+          alert(error.response.data.message)
+        }else {
+          alert("Error Internal")
+        }
+      });
+    }
+    
   }
   function handleClickNewIngredients() {
     if (newingredients === "") {
@@ -77,7 +95,7 @@ export function EditDish() {
                   <LuUpload size={24} />
                   {data.dish.imgurl ? data.dish.imgurl : "Selecione imagem"}
                 </label>
-                <input onChange={e => setFile(e.target.value)} type="file" id="form-controls" />
+                <input onChange={e => setFile(e.target.files[0])} type="file" id="form-controls" />
               </div>
 
               <div>
@@ -140,7 +158,7 @@ export function EditDish() {
             </div>
 
             <div>
-              <button type="button">Excluir prato</button>
+              <button onClick={ExcluirEdit} type="button">Excluir prato</button>
               <button onClick={SalvedEdit} type="button">Salvar Alterações</button>
             </div>
           </form>
