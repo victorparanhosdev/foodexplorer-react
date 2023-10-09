@@ -46,6 +46,7 @@ width: min(112rem, 95%);
 
     > div:first-child {
             min-width: 39rem;
+            width: 39rem;
 
 
 
@@ -64,7 +65,7 @@ width: min(112rem, 95%);
         }
         > p {
             margin-top: 2.4rem;
-            font-size: 2.4rem;
+            font-size: clamp(1.6rem, 1vw + 1rem, 2.4rem);
             font-weight: 300;
             color: ${({theme})=> theme.COLORS.LIGHT_100};
         }
