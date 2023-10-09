@@ -22,8 +22,7 @@ export function Home() {
   const [data, setData] = useState([]);
   const [favoriteItems, setFavoriteItems] = useState([]);
   const [infoTitle, setinfoTitle] = useState("");
-  const [quantity, setQuantity] = useState(1);
-  const [listPrice, setlistPrice] = useState([])
+
  
   const localhostImg = `${api.defaults.baseURL}files/`
 
@@ -80,45 +79,30 @@ export function Home() {
       localStorage.setItem("@FavoritesFoodExplorer", JSON.stringify(updatedFavorites));
     }
   };
+
   function handleSearch(term) {
     setinfoTitle(term);
 
   }
+  function updatedItem(itemID, quantity) {
+    // Encontre o item com o ID correspondente
 
-  function infoQuantity(valor, item) {
-    const { price, id } = item;
- 
-
-    const Dados={id, price}
-
-    const ListFilter = listPrice.find(dado => dado.id === id)
-
-    if(!ListFilter){
-      setlistPrice(PrevState => [...PrevState, Dados])
-      
-    }else {
-     
-      const newListPrice = listPrice.map(dado => {
-        if (dado.id === id) {
-          return { ...dado, price: dado.price * valor };
-        }
-        return dado;
-      });
-
-      
-
-      console.log(newListPrice)
-    }
+    const updatedData = data.map((item) => {
+      if (item.id === itemID) {
+        // Atualize a propriedade 'price'
+        return {
+          ...item,
+          price: Number(item.price) * quantity,
+        };
+      }
+      return item;
+    });
   
+    // Atualize o estado 'data' com os dados atualizados
+    setData(updatedData);
 
-
-
-    //console.log(updatedPrice, id)
-
-    setQuantity(valor);
   }
 
- 
 
   return (
     <Container>
@@ -145,9 +129,9 @@ export function Home() {
                     </div>
                     <h1>{item.name}</h1>
                     <p>{item.description}</p>
-                    <span>R${(item.price) * quantity}</span>
+                    <span>R${item.price}</span>
                   </button>
-                  {user.isAdmin ? null : <Button infoValue={quantity} infoItem={item} onInfoValueChange={infoQuantity}/>}
+                  {user.isAdmin ? null : <Button itemInfo={item.id} updatedItem={updatedItem}/>}
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -175,9 +159,9 @@ export function Home() {
                     </div>
                     <h1>{item.name}</h1>
                     <p>{item.description}</p>
-                    <span>R${(item.price) * (quantity)}</span>
+                    <span>R${item.price}</span>
                   </button>
-                  {user.isAdmin ? null : <Button infoValue={quantity} infoItem={item} onInfoValueChange={infoQuantity}/>}
+                  {user.isAdmin ? null : <Button />}
                 </SwiperSlide>
                 ))}
             </Swiper>
@@ -205,9 +189,9 @@ export function Home() {
                     </div>
                     <h1>{item.name}</h1>
                     <p>{item.description}</p>
-                    <span>R${(item.price) * (quantity)}</span>
+                    <span>R${item.price}</span>
                   </button>
-                  {user.isAdmin ? null : <Button infoValue={quantity} infoItem={item} onInfoValueChange={infoQuantity}/>}
+                  {user.isAdmin ? null : <Button />}
                 </SwiperSlide>
                 ))}
             </Swiper>
