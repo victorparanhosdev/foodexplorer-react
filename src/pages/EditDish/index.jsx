@@ -13,38 +13,65 @@ export function EditDish() {
 
   const [data, setData] = useState("");
   const [stateingredients, setIngredients] = useState([]);
+
   const [newingredients, setNewIngredients] = useState("");
 
-  const [file, setFile] = useState("");
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
+  const [file, setFile] = useState(null);
+  const [name, setName] = useState(null);
+  const [category, setCategory] = useState(null);
+  const [price, setPrice] = useState(null);
+  const [description, setDescription] = useState(null);
 
-  function removeItem(name) {
-    const updated = stateingredients.filter((ingredit) => ingredit !== name);
-    setIngredients(updated);
+  function removeItem(valueName) {
+    const updated = stateingredients.filter(name => name !== valueName);
+    setIngredients(updated)
+
+
   }
   async function SalvedEdit() {
 
-    console.log(file, name, category, stateingredients, price, description)
+    const editDish = {
+      name, category, ingredients: stateingredients, price, description
+    }
+    const formData = new FormData();
+
+
+    if (file) {
+      formData.append("patchImg", file)
+      api.patch(`/dish/${params.id}/`, formData)
+    }
+
+
+    await api.put(`/dish/${params.id}`, editDish).then(() => {
+      alert("Prato editado com sucesso!!")
+      navigate("/")
+    }).catch(error => {
+      if (error.response) {
+        alert(error.response.data.message)
+      } else {
+        alert("error internal")
+      }
+    })
+
 
   }
-  async function ExcluirEdit(){
+
+
+  async function ExcluirEdit() {
     const isOk = confirm("Tem certeza que deseja excluir ?")
-    if(isOk){
-      await api.delete(`/dish/${params.id}`).then(()=> {
+    if (isOk) {
+      await api.delete(`/dish/${params.id}`).then(() => {
         alert("Prato excluido com sucesso")
         navigate("/")
-      }).catch(error => { 
-        if(error.response){
+      }).catch(error => {
+        if (error.response) {
           alert(error.response.data.message)
-        }else {
+        } else {
           alert("Error Internal")
         }
       });
     }
-    
+
   }
   function handleClickNewIngredients() {
     if (newingredients === "") {
@@ -52,6 +79,7 @@ export function EditDish() {
     }
 
     setIngredients((prevState) => [...prevState, newingredients]);
+
     document.querySelector(".btn-add").value = "";
     setNewIngredients("")
   }
@@ -64,7 +92,7 @@ export function EditDish() {
     async function fetchEditDish() {
       const response = await api.get(`/dish/${params.id}`);
       setData(response.data);
-      setIngredients(response.data.ingredients.map(item => item.name));
+      setIngredients(response.data.ingredients.map(item => item.name))
     }
 
     fetchEditDish();
@@ -93,7 +121,7 @@ export function EditDish() {
                 <span>Imagem do prato</span>
                 <label htmlFor="form-controls">
                   <LuUpload size={24} />
-                  {data.dish.imgurl ? data.dish.imgurl : "Selecione imagem"}
+                  {file ? file.name : data.dish.imgurl}
                 </label>
                 <input onChange={e => setFile(e.target.files[0])} type="file" id="form-controls" />
               </div>
@@ -121,14 +149,12 @@ export function EditDish() {
               <div>
                 <span htmlFor="ingredientes">Ingredientes</span>
                 <div>
-                  {stateingredients.map((name, index) => (
-                    <NewTag
-                      onClick={() => removeItem(name)}
-                      key={String(index)}
-                      value={name}
-                    />
-                  ))}
-                  { }
+                  {stateingredients.map((name, index) => {
+                    return (
+                      <NewTag onClick={() => removeItem(name)} key={String(index)} value={name} />
+                    )
+                  })}
+
 
                   <NewTag
                     onChange={(e) => setNewIngredients(e.target.value)}
