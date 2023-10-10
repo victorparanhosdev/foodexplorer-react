@@ -26,7 +26,7 @@ width: min(112rem, 95%);
 > div {
     margin: 3.2rem auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(23.2rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(23.1rem, 1fr));
     gap: 4.8rem;
 }
 
@@ -35,16 +35,20 @@ width: min(112rem, 95%);
     display: flex;
     align-items: center;
     gap: 1.3rem;
+      
+        img {
+            display: block;
+            width: 7.2rem;
+             height: 7.2rem;
+        }
 
-    img {
-        display: block;
-        width: 7rem;
-    }
-
-    h1{
+    a{
         color: ${({theme})=> theme.COLORS.LIGHT_300};
         font-family: "Poppins", "sans-serif";
         font-size: 2rem;
+        font-weight: 500;
+        display: block;
+
         
     }
 

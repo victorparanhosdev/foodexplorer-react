@@ -6,11 +6,14 @@ import FoodExplorer from "../../assets/Polygon1.svg"
 import { useAuth } from "../../hooks/auth"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
+import { useState } from "react"
 
 
-export function Header({ onSearch, onFavorites }) {
+export function Header({ onSearch, onFavorites, onRequests }) {
     const navigate = useNavigate()
     const { signOut, user } = useAuth()
+
+
 
 
     function handleSignOut() {
@@ -18,6 +21,7 @@ export function Header({ onSearch, onFavorites }) {
         navigate("/")
 
     }
+
 
 
 
@@ -39,7 +43,7 @@ export function Header({ onSearch, onFavorites }) {
                 {user.isAdmin ? <Link to="/newdish" className="btn-newdish">Novos Pratos</Link> :
                     <>
                         {onFavorites && onFavorites.length > 0 && <Link to="/favorites">Meus favoritos</Link>}
-                        <button className="btn-pedido" type="button"><PiReceipt size={24} />Pedidos (0)</button>
+                        <button className="btn-pedido" type="button"><PiReceipt size={24} />{Array.isArray(onRequests) && onRequests.length > 0 ? `Pedidos (${onRequests.length})` : "Pedidos (0)" }</button>
                     </>
                 }
 
