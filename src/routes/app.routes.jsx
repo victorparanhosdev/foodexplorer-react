@@ -4,6 +4,7 @@ import { Details } from "../pages/Details";
 import { NewDish } from "../pages/NewDish";
 import { EditDish } from "../pages/EditDish";
 import { useAuth } from "../hooks/auth";
+import { Favorites } from "../pages/Favorites";
 
 export function AppRoutes() {
     const { user } = useAuth();
@@ -14,6 +15,7 @@ export function AppRoutes() {
             <Route path="/newdish" element={user && user.isAdmin ? <NewDish /> : <Navigate to="/" />} />
             <Route path="/editdish/:id" element={user && user.isAdmin ? <EditDish /> : <Navigate to="/" />} />
             <Route path="/details/:id" element={<Details />} />
+            <Route path="/favorites" element={user && !user.isAdmin ? <Favorites /> : <Navigate to="/" />}/>
             <Route path="*" element={<Navigate to="/" />} />
         </Routes>
     );

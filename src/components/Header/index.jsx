@@ -7,10 +7,10 @@ import { useAuth } from "../../hooks/auth"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 
-export function Header({ onSearch }) {
+
+export function Header({ onSearch, onFavorites }) {
     const navigate = useNavigate()
     const { signOut, user } = useAuth()
-
 
 
     function handleSignOut() {
@@ -24,11 +24,11 @@ export function Header({ onSearch }) {
     return (
         <Container>
             <nav>
-                <div>
+                <Link to="/">
                     <img src={FoodExplorer} alt="" />
                     <span>food explorer{user.isAdmin ? <p className="admin">admin</p> : null}</span>
 
-                </div>
+                </Link>
 
                 <div>
                     <FiSearch size={24} />
@@ -38,7 +38,7 @@ export function Header({ onSearch }) {
 
                 {user.isAdmin ? <Link to="/newdish" className="btn-newdish">Novos Pratos</Link> :
                     <>
-                        <button type="button">Meus favoritos</button>
+                        {onFavorites && onFavorites.length > 0 && <Link to="/favorites">Meus favoritos</Link>}
                         <button className="btn-pedido" type="button"><PiReceipt size={24} />Pedidos (0)</button>
                     </>
                 }

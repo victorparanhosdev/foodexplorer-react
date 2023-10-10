@@ -213,6 +213,7 @@ export function NewDish() {
                 type="number"
                 placeholder="R$00.00"
               />
+
             </div>
           </div>
 

@@ -22,32 +22,13 @@ export function Home() {
   const [data, setData] = useState([]);
   const [favoriteItems, setFavoriteItems] = useState([]);
   const [infoTitle, setinfoTitle] = useState("");
+  const [defaultData, setdefaultData] = useState([])
 
+
+  
  
   const localhostImg = `${api.defaults.baseURL}files/`
 
-
-  useEffect(() => {
-    async function fechDish() {
-      const response = await api.get(`/dish/?title=${infoTitle}&ingredients=${[]}`);
-      setData(response.data);
-    }
-    fechDish();
-
-
-
-
-
-  }, [infoTitle]);
-
-
-  useEffect(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem("@FavoritesFoodExplorer"))
-    if (storedFavorites) {
-      setFavoriteItems(storedFavorites);
-    }
-
-  }, [])
 
 
   function buttonEditDish(id) {
@@ -84,29 +65,57 @@ export function Home() {
     setinfoTitle(term);
 
   }
-  function updatedItem(itemID, quantity) {
-    // Encontre o item com o ID correspondente
 
-    const updatedData = data.map((item) => {
-      if (item.id === itemID) {
-        // Atualize a propriedade 'price'
-        return {
-          ...item,
-          price: Number(item.price) * quantity,
-        };
-      }
-      return item;
-    });
+  function handleQuantityChange(itemId, newQuantity) {
+
+      const filterItem = defaultData.filter(item => item.id === itemId)[0].price
+
+      setData((prevData) => {
+        return prevData.map((item) => {
+          if (item.id === itemId) {
+            // Encontrou o item com o id desejado, atualize o price
+            return { ...item, price: (Number(filterItem)) * newQuantity};
+          } else {
+            // Mantenha os outros itens inalterados
+            return item;
+          }
+        });
+      });
+
   
-    // Atualize o estado 'data' com os dados atualizados
-    setData(updatedData);
+
 
   }
+  useEffect(() => {
+    async function fechDish() {
+      const response = await api.get(`/dish/?title=${infoTitle}&ingredients=${[]}`);
+      setData(response.data);
+      setdefaultData(response.data)
+    }
+    fechDish();
 
 
+
+
+
+  }, [infoTitle]);
+
+
+  useEffect(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem("@FavoritesFoodExplorer"))
+    if (storedFavorites) {
+      setFavoriteItems(storedFavorites);
+    }
+
+  }, [])
+
+
+  
+  
   return (
     <Container>
-      <Header onSearch={handleSearch} />
+     
+      <Header onFavorites={favoriteItems} onSearch={handleSearch} />
       <Banner />
       <Content>
         {data.some((item) => item.category === "Refeições") && (
@@ -131,7 +140,7 @@ export function Home() {
                     <p>{item.description}</p>
                     <span>R${item.price}</span>
                   </button>
-                  {user.isAdmin ? null : <Button itemInfo={item.id} updatedItem={updatedItem}/>}
+                  {user.isAdmin ? null : <Button itemID={item.id} onChangeQuantity={handleQuantityChange} />}
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -161,7 +170,7 @@ export function Home() {
                     <p>{item.description}</p>
                     <span>R${item.price}</span>
                   </button>
-                  {user.isAdmin ? null : <Button />}
+                  {user.isAdmin ? null : <Button itemID={item.id} onChangeQuantity={handleQuantityChange} />}
                 </SwiperSlide>
                 ))}
             </Swiper>
@@ -191,14 +200,12 @@ export function Home() {
                     <p>{item.description}</p>
                     <span>R${item.price}</span>
                   </button>
-                  {user.isAdmin ? null : <Button />}
+                  {user.isAdmin ? null : <Button itemID={item.id} onChangeQuantity={handleQuantityChange} />}
                 </SwiperSlide>
                 ))}
             </Swiper>
           </Article>
         )}
-
-
       </Content>
       <Footer />
     </Container>

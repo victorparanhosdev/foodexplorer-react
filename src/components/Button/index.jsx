@@ -1,28 +1,23 @@
 import { Container } from "./styles";
 import { FiPlus, FiMinus } from 'react-icons/fi';
 import { useState, useEffect } from "react";
-export function Button({updatedItem, itemInfo}) {
+export function Button({onChangeQuantity, itemID}) {
 
-  const [quatitidade, setQuantidade] = useState(1)
+  const [quantity, setQuantity] = useState(1)
 
 
   function minusButton() {
-    if (quatitidade < 2) {
+    if (quantity < 2) {
       return;
     }
-    setQuantidade((quatitidade - 1));
-    updatedItem(itemInfo, quatitidade)
+    setQuantity(quantity - 1);
+    onChangeQuantity(itemID, quantity - 1)
 
   }
 
- 
-
-  
-
-
   function maxButton() {
-    setQuantidade((quatitidade + 1));
-    updatedItem(itemInfo, quatitidade)
+    setQuantity(quantity + 1);
+    onChangeQuantity(itemID, quantity + 1)
 
   }
 
@@ -34,7 +29,7 @@ export function Button({updatedItem, itemInfo}) {
         <button onClick={minusButton} type="button">
           <FiMinus />
         </button>
-        <input type="text" value={String(quatitidade).padStart(2, '0')} readOnly />
+        <input type="text" value={String(quantity).padStart(2, '0')} readOnly />
         <button onClick={maxButton} type="button">
           <FiPlus />
         </button>

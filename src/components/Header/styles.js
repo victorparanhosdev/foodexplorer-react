@@ -13,6 +13,8 @@ nav {
     width: min(112rem, 95%);
     margin: auto;
 
+ 
+
 button, a {
     border: none;
     background: transparent;
@@ -36,7 +38,7 @@ button, a {
     gap: 0.8rem;
 }
 
-> div:nth-child(1) {
+> a:nth-child(1) {
     display: flex;
     gap: 1rem;
     img {
