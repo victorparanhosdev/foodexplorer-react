@@ -77,6 +77,7 @@ export function Home() {
   function cartItem(item){
 
     setRequests(prevState=> [item, ...prevState])
+    
 
   }
 
@@ -115,6 +116,7 @@ export function Home() {
       setFavoriteItems(storedFavorites);
     }
   }, []);
+
   useEffect(() => {
    console.log(requests)
   }, [requests]);

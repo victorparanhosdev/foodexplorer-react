@@ -21,9 +21,9 @@ export function Header({ onSearch, onFavorites, onRequests }) {
         navigate("/")
 
     }
+    
 
-
-
+    
 
     return (
         <Container>
@@ -43,7 +43,7 @@ export function Header({ onSearch, onFavorites, onRequests }) {
                 {user.isAdmin ? <Link to="/newdish" className="btn-newdish">Novos Pratos</Link> :
                     <>
                         {onFavorites && onFavorites.length > 0 && <Link to="/favorites">Meus favoritos</Link>}
-                        <button className="btn-pedido" type="button"><PiReceipt size={24} />{Array.isArray(onRequests) && onRequests.length > 0 ? `Pedidos (${onRequests.length})` : "Pedidos (0)" }</button>
+                        <Link to="/requests" className="btn-pedido"><PiReceipt size={24} />{Array.isArray(onRequests) && onRequests.length > 0 ? `Pedidos (${onRequests.length})` : "Pedidos (0)" }</Link>
                     </>
                 }
 
