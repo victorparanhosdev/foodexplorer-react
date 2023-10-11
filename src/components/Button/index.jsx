@@ -1,7 +1,7 @@
 import { Container } from "./styles";
 import { FiPlus, FiMinus } from 'react-icons/fi';
 import { useState, useEffect } from "react";
-export function Button({onChangeQuantity, itemInfo, cartItem}) {
+export function Button({onChangeQuantity, setReq, itemInfo, cartItem}) {
 
   const [quantity, setQuantity] = useState(1)
 
@@ -20,8 +20,10 @@ export function Button({onChangeQuantity, itemInfo, cartItem}) {
     onChangeQuantity(itemInfo.id, quantity + 1)
 
   }
-  function handleClickAdd(item){
-    cartItem(item)
+  function handleClickAdd(setReq){
+    cartItem(setReq, quantity)
+    
+
   }
 
 
@@ -37,7 +39,7 @@ export function Button({onChangeQuantity, itemInfo, cartItem}) {
           <FiPlus />
         </button>
       </div>
-      <button onClick={() => handleClickAdd(itemInfo)} className="btn-incluir" type="button">
+      <button onClick={() => handleClickAdd(setReq)} className="btn-incluir" type="button">
         incluir
       </button>
     </Container>

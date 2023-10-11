@@ -23,15 +23,13 @@ export function Home() {
   const [favoriteItems, setFavoriteItems] = useState([]);
   const [infoTitle, setinfoTitle] = useState("");
   const [defaultData, setdefaultData] = useState([]);
-  const [requests, setRequests] = useState([]);
+  const [requests, setRequests] = useState(0);
 
   const localhostImg = `${api.defaults.baseURL}files/`;
 
   function buttonEditDish(id) {
     navigate(`/editdish/${id}`);
   }
-
-
 
   function handleDetails(id) {
     navigate(`/details/${id}`);
@@ -74,11 +72,37 @@ export function Home() {
     setinfoTitle(term);
   }
 
-  function cartItem(item){
+  function cartItem(setReq, quantity) {
+    setReq[0].quantity = quantity
+    let DadosOld = JSON.parse(localStorage.getItem("@foodrequests")) || [];
+    setRequests(PrevState => PrevState + quantity);
+ 
 
-    setRequests(prevState=> [item, ...prevState])
+
+    if(!DadosOld.some(dado=> dado.id === setReq[0].id)){
+      console.log("CHEGUEI AQUI 2")
+      setReq[0].quantity = quantity
+      localStorage.setItem("@foodrequests", JSON.stringify(setReq))
+
+
+    }else {
+
+      const ItemNew = DadosOld.map(item=> {
+        if(setReq[0].id === item.id) {
+          return {...item, quantity: item.quantity + quantity}
+        }
+      })
+
+      const Updated = DadosOld.filter(itemd => itemd.id !== setReq[0].id)
+      
+      ArrayNew = [Updated, ItemNew]
+      localStorage.setItem("@foodrequests", JSON.stringify(ArrayNew))
+      
+    }
+
+
+
     
-
   }
 
   function handleQuantityChange(itemId, newQuantity) {
@@ -118,12 +142,16 @@ export function Home() {
   }, []);
 
   useEffect(() => {
-   console.log(requests)
+    console.log(requests);
   }, [requests]);
 
   return (
     <Container>
-      <Header onRequests={requests} onFavorites={favoriteItems} onSearch={handleSearch} />
+      <Header
+        onRequests={requests}
+        onFavorites={favoriteItems}
+        onSearch={handleSearch}
+      />
       <Banner />
       <Content>
         {data.some((item) => item.category === "Refeições") && (
@@ -175,6 +203,7 @@ export function Home() {
                     {user.isAdmin ? null : (
                       <Button
                         cartItem={cartItem}
+                        setReq={defaultData.filter((res) => res.id === item.id)}
                         itemInfo={item}
                         onChangeQuantity={handleQuantityChange}
                       />

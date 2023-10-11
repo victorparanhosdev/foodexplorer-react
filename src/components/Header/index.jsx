@@ -14,7 +14,8 @@ export function Header({ onSearch, onFavorites, onRequests }) {
     const { signOut, user } = useAuth()
 
 
-
+ 
+   
 
     function handleSignOut() {
         signOut()
@@ -43,7 +44,7 @@ export function Header({ onSearch, onFavorites, onRequests }) {
                 {user.isAdmin ? <Link to="/newdish" className="btn-newdish">Novos Pratos</Link> :
                     <>
                         {onFavorites && onFavorites.length > 0 && <Link to="/favorites">Meus favoritos</Link>}
-                        <Link to="/requests" className="btn-pedido"><PiReceipt size={24} />{Array.isArray(onRequests) && onRequests.length > 0 ? `Pedidos (${onRequests.length})` : "Pedidos (0)" }</Link>
+                        <Link to="/requests" className="btn-pedido"><PiReceipt size={24} />{onRequests !== 0 ? `Pedidos (${onRequests})` : "Pedidos (0)" }</Link>
                     </>
                 }
 

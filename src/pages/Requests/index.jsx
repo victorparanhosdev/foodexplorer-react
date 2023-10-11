@@ -10,8 +10,22 @@ export function Requests() {
 
   const navigate = useNavigate()
   const baseURL = api.defaults.baseURL;
- 
 
+  function anonimo(){
+
+
+  }
+ 
+  useEffect(()=> {
+    async function fetchRequests(){
+      const response = await api.get(
+        `/dish/?title=${infoTitle}&ingredients=${[]}`
+      );
+      setData(response.data);
+    }
+
+    fetchRequests()
+  })
 
 
   return (
