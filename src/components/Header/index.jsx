@@ -6,7 +6,7 @@ import FoodExplorer from "../../assets/Polygon1.svg"
 import { useAuth } from "../../hooks/auth"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 export function Header({ onSearch, onFavorites, onRequests }) {
@@ -25,6 +25,16 @@ export function Header({ onSearch, onFavorites, onRequests }) {
     
 
     
+    useEffect(()=> {
+
+        const HaveData = JSON.parse(localStorage.getItem("@foodrequests")) || [];
+
+        if(HaveData){
+            console.log(HaveData)
+        }
+
+
+    },[])
 
     return (
         <Container>
@@ -44,7 +54,7 @@ export function Header({ onSearch, onFavorites, onRequests }) {
                 {user.isAdmin ? <Link to="/newdish" className="btn-newdish">Novos Pratos</Link> :
                     <>
                         {onFavorites && onFavorites.length > 0 && <Link to="/favorites">Meus favoritos</Link>}
-                        <Link to="/requests" className="btn-pedido"><PiReceipt size={24} />{onRequests !== 0 ? `Pedidos (${onRequests})` : "Pedidos (0)" }</Link>
+                        <Link to="/requests" className="btn-pedido"><PiReceipt size={24} />{onRequests && onRequests.length > 0 ? `Pedidos (${onRequests.length})` : "Pedidos (0)" }</Link>
                     </>
                 }
 

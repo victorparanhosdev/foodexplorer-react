@@ -23,7 +23,7 @@ export function Home() {
   const [favoriteItems, setFavoriteItems] = useState([]);
   const [infoTitle, setinfoTitle] = useState("");
   const [defaultData, setdefaultData] = useState([]);
-  const [requests, setRequests] = useState(0);
+  const [requests, setRequests] = useState([]);
 
   const localhostImg = `${api.defaults.baseURL}files/`;
 
@@ -75,33 +75,23 @@ export function Home() {
   function cartItem(setReq, quantity) {
     setReq[0].quantity = quantity
     let DadosOld = JSON.parse(localStorage.getItem("@foodrequests")) || [];
-    setRequests(PrevState => PrevState + quantity);
- 
-
-
-    if(!DadosOld.some(dado=> dado.id === setReq[0].id)){
-      console.log("CHEGUEI AQUI 2")
-      setReq[0].quantity = quantity
-      localStorage.setItem("@foodrequests", JSON.stringify(setReq))
-
-
+    const haveData = DadosOld.some(itemFind => itemFind.id === setReq[0].id)
+    if(!haveData){
+      const updated = [setReq[0], ...DadosOld]
+      localStorage.setItem("@foodrequests", JSON.stringify(updated))
+      setRequests(PrevState => [setReq[0], ...PrevState])
+      
     }else {
-
-      const ItemNew = DadosOld.map(item=> {
-        if(setReq[0].id === item.id) {
-          return {...item, quantity: item.quantity + quantity}
+     const Updated = DadosOld.map(newData=> {
+        if(newData.id === setReq[0].id){
+          return {...newData, quantity: newData.quantity + quantity}
         }
+        return newData
       })
-
-      const Updated = DadosOld.filter(itemd => itemd.id !== setReq[0].id)
-      
-      ArrayNew = [Updated, ItemNew]
-      localStorage.setItem("@foodrequests", JSON.stringify(ArrayNew))
-      
+      setRequests(Updated)
+      localStorage.setItem("@foodrequests", JSON.stringify(Updated))
+  
     }
-
-
-
     
   }
 
@@ -226,46 +216,48 @@ export function Home() {
                 .filter((item) => item.category === "Sobremesas")
                 .map((item, index) => (
                   <SwiperSlide key={String(item.id)} className="card">
-                    {user && user.isAdmin ? (
-                      <button
-                        onClick={() => buttonEditDish(item.id)}
-                        className="btn-fav-edit"
-                      >
-                        <PiPencilSimpleBold size={30} />
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => toggleHeart(item)}
-                        className="btn-fav-edit"
-                      >
-                        {favoriteItems.some(
-                          (favItem) => favItem.id === item.id
-                        ) ? (
-                          <AiFillHeart size={30} />
-                        ) : (
-                          <AiOutlineHeart size={30} />
-                        )}
-                      </button>
-                    )}
-
+                  {user && user.isAdmin ? (
                     <button
-                      onClick={() => handleDetails(item.id)}
-                      className="showdish"
+                      onClick={() => buttonEditDish(item.id)}
+                      className="btn-fav-edit"
                     >
-                      <div className="dish">
-                        <img src={`${localhostImg}${item.imgurl}`} alt="" />
-                      </div>
-                      <h1>{item.name}</h1>
-                      <p>{item.description}</p>
-                      <span>R${item.price}</span>
+                      <PiPencilSimpleBold size={30} />
                     </button>
-                    {user.isAdmin ? null : (
-                      <Button
-                        itemID={item.id}
-                        onChangeQuantity={handleQuantityChange}
-                      />
-                    )}
-                  </SwiperSlide>
+                  ) : (
+                    <button
+                      onClick={() => toggleHeart(item)}
+                      className="btn-fav-edit"
+                    >
+                      {favoriteItems.some(
+                        (favItem) => favItem.id === item.id
+                      ) ? (
+                        <AiFillHeart size={30} />
+                      ) : (
+                        <AiOutlineHeart size={30} />
+                      )}
+                    </button>
+                  )}
+
+                  <button
+                    onClick={() => handleDetails(item.id)}
+                    className="showdish"
+                  >
+                    <div className="dish">
+                      <img src={`${localhostImg}${item.imgurl}`} alt="" />
+                    </div>
+                    <h1>{item.name}</h1>
+                    <p>{item.description}</p>
+                    <span>R${item.price}</span>
+                  </button>
+                  {user.isAdmin ? null : (
+                    <Button
+                      cartItem={cartItem}
+                      setReq={defaultData.filter((res) => res.id === item.id)}
+                      itemInfo={item}
+                      onChangeQuantity={handleQuantityChange}
+                    />
+                  )}
+                </SwiperSlide>
                 ))}
             </Swiper>
           </Article>
@@ -283,46 +275,48 @@ export function Home() {
                 .filter((item) => item.category === "Bebidas")
                 .map((item, index) => (
                   <SwiperSlide key={String(item.id)} className="card">
-                    {user && user.isAdmin ? (
-                      <button
-                        onClick={() => buttonEditDish(item.id)}
-                        className="btn-fav-edit"
-                      >
-                        <PiPencilSimpleBold size={30} />
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => toggleHeart(item)}
-                        className="btn-fav-edit"
-                      >
-                        {favoriteItems.some(
-                          (favItem) => favItem.id === item.id
-                        ) ? (
-                          <AiFillHeart size={30} />
-                        ) : (
-                          <AiOutlineHeart size={30} />
-                        )}
-                      </button>
-                    )}
-
+                  {user && user.isAdmin ? (
                     <button
-                      onClick={() => handleDetails(item.id)}
-                      className="showdish"
+                      onClick={() => buttonEditDish(item.id)}
+                      className="btn-fav-edit"
                     >
-                      <div className="dish">
-                        <img src={`${localhostImg}${item.imgurl}`} alt="" />
-                      </div>
-                      <h1>{item.name}</h1>
-                      <p>{item.description}</p>
-                      <span>R${item.price}</span>
+                      <PiPencilSimpleBold size={30} />
                     </button>
-                    {user.isAdmin ? null : (
-                      <Button
-                        itemID={item.id}
-                        onChangeQuantity={handleQuantityChange}
-                      />
-                    )}
-                  </SwiperSlide>
+                  ) : (
+                    <button
+                      onClick={() => toggleHeart(item)}
+                      className="btn-fav-edit"
+                    >
+                      {favoriteItems.some(
+                        (favItem) => favItem.id === item.id
+                      ) ? (
+                        <AiFillHeart size={30} />
+                      ) : (
+                        <AiOutlineHeart size={30} />
+                      )}
+                    </button>
+                  )}
+
+                  <button
+                    onClick={() => handleDetails(item.id)}
+                    className="showdish"
+                  >
+                    <div className="dish">
+                      <img src={`${localhostImg}${item.imgurl}`} alt="" />
+                    </div>
+                    <h1>{item.name}</h1>
+                    <p>{item.description}</p>
+                    <span>R${item.price}</span>
+                  </button>
+                  {user.isAdmin ? null : (
+                    <Button
+                      cartItem={cartItem}
+                      setReq={defaultData.filter((res) => res.id === item.id)}
+                      itemInfo={item}
+                      onChangeQuantity={handleQuantityChange}
+                    />
+                  )}
+                </SwiperSlide>
                 ))}
             </Swiper>
           </Article>

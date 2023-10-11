@@ -17,14 +17,14 @@ export function Requests() {
   }
  
   useEffect(()=> {
-    async function fetchRequests(){
+/*     async function fetchRequests(){
       const response = await api.get(
         `/dish/?title=${infoTitle}&ingredients=${[]}`
       );
       setData(response.data);
     }
 
-    fetchRequests()
+    fetchRequests() */
   })
 
 
