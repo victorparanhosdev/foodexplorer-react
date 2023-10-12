@@ -9,23 +9,23 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 
 
-export function Header({ onSearch, onFavorites, onRequests }) {
+export function Header({ onSearch, onFavorites, onRequests, onStatecart }) {
     const navigate = useNavigate()
     const { signOut, user } = useAuth()
-    const [statecart, setStateCart] = useState()
+    const [statecart, setStateCart] = useState([])
     function handleSignOut() {
         signOut()
         navigate("/")
 
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         const HaveData = JSON.parse(localStorage.getItem("@foodrequests")) || [];
-        if(HaveData){
+        if (HaveData) {
             setStateCart(HaveData)
         }
 
-    },[onRequests])
+    }, [onRequests, onStatecart])
 
     return (
         <Container>
@@ -45,7 +45,7 @@ export function Header({ onSearch, onFavorites, onRequests }) {
                 {user.isAdmin ? <Link to="/newdish" className="btn-newdish">Novos Pratos</Link> :
                     <>
                         {onFavorites && onFavorites.length > 0 && <Link to="/favorites">Meus favoritos</Link>}
-                        <Link to="/requests" className="btn-pedido"><PiReceipt size={24} />{statecart && statecart.length > 0 ? `Pedidos (${statecart.length})` : "Pedidos (0)" }</Link>
+                        <Link to="/requests" className="btn-pedido"><PiReceipt size={24} />{statecart && statecart.length > 0 ? `Pedidos (${statecart.length})` : "Pedidos (0)"}</Link>
                     </>
                 }
 

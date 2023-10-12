@@ -21,7 +21,42 @@ export function Details() {
   function handleEditDish(){
       navigate(`/editdish/${params.id}`)
   }
+ 
+  function cartItem() {
 
+    
+     const DadosOld = JSON.parse(localStorage.getItem("@foodrequests")) || [];
+      const HaveItem = DadosOld.some(item=> item.id === params.id)
+
+     if(!HaveItem){
+  
+
+      const newArray = [data.dish,...DadosOld]
+      console.log(data.dish)
+      //localStorage.setItem("@foodrequests", JSON.stringify(newArray))
+       
+
+    }else {
+     /*  const newArray = DadosOld.map(newItem=> {
+        if(newItem.id == params.id){
+          return {...newItem, quantity: newItem.quantity + quantity}
+        }
+        return newItem
+      })
+
+      localStorage.setItem("@foodrequests", JSON.stringify(newArray))
+ */
+    }
+
+
+
+      
+
+
+  
+    
+    
+  }
 
   function ButtonBack(event) {
     event.preventDefault()
@@ -98,7 +133,7 @@ export function Details() {
                   <FiPlus />
                 </button>
               </div>
-                <button className="btn-incluir" type="button">incluir • R${Number(data.dish.price) * quantity}</button></>
+                <button onClick={cartItem} className="btn-incluir" type="button">incluir • R${Number(data.dish.price) * quantity}</button></>
               }
             </div>
 

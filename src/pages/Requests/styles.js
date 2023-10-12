@@ -7,8 +7,6 @@ grid-template-rows: 10.4rem auto 7.7rem;
 grid-auto-columns: 100%;
 background: ${({ theme }) => theme.COLORS.DARK_400};
 
-
-
 `
 
 export const Content = styled.section`
@@ -16,7 +14,11 @@ margin: 0 auto;
 padding-block: 3.4rem;
 width: min(112rem, 95%);
 display: flex;
+justify-content: space-between;
 gap: 7.5rem;
+.selected {
+    background-color:  ${({ theme }) => theme.COLORS.DARK_800};
+}
 
 h1 {
     color: ${({ theme }) => theme.COLORS.LIGHT_300};
@@ -24,6 +26,8 @@ h1 {
     font-weight: 400;
     margin-bottom: 3.2rem;
 }
+> div:nth-child(1){
+
 
     .card{
         padding-block: 1.6rem;
@@ -80,13 +84,118 @@ h1 {
         }
 
 
+}
+
+`
+
+export const PayMent = styled.div`
+
+table {
+width: 53rem;
+height: 44.5rem;
+border-radius: 0.8rem;
+border: 1px solid ${({ theme }) => theme.COLORS.LIGHT_600};
+thead {
+    tr {
+        height: 8.1rem;
+
+    }
+
+td {
+
+    text-align: center;
+    width: 50%;
+    border-bottom: 1px solid ${({ theme }) => theme.COLORS.LIGHT_600};
+
+}
+
+td:nth-child(1) {
+
+    border-right: 1px solid ${({ theme }) => theme.COLORS.LIGHT_600};
+}
+
+button {
+    
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+    color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    font-family: 'Roboto', 'sans-serif';
+    font-size: 1.6rem;
+    font-weight: 400;
+
+    &:hover{
+        background-color:  ${({ theme }) => theme.COLORS.DARK_800};
+    }
+}
+
+}
+
+tbody {
+  
+ tr td {
+    text-align: center;
+ }
 
 
-    > div:nth-child(2){}
+ .cartao-credit {
+    width: 34.8rem;
 
+    margin: auto;
+    display: grid;
+    gap: 3.7rem;
+    label {
+        font-family: "Roboto", "sans-serif";
+        display: block;
+        color: ${({ theme }) => theme.COLORS.LIGHT_400};
+        font-size: 1.6rem;
+        text-align: start;
+        margin-bottom: 0.8rem;
+    }
+    input {
+        padding: 1.2rem 1.4rem;
+        width: 100%;
+        background-color: transparent;
+        border-radius: 0.5rem;
+        color:  ${({ theme }) => theme.COLORS.LIGHT_500};
+        border: 1px solid  ${({ theme }) => theme.COLORS.LIGHT_100};
+    }
 
+    button {
+        background-color: ${({ theme }) => theme.COLORS.TINTS_TOMATO_100};
+        padding: 1.2rem 3.2rem;
+        width: 100%;
+        border: none;
+       color: ${({ theme }) => theme.COLORS.LIGHT_100};
+       border-radius: 0.5rem;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       gap: 0.8rem;
+       height: 5.6rem;
+    }
 
+    .v-cartao {
+        display: flex;
+        gap:1.7rem;
+    }
+ }
 
+}
+
+}
+
+> h1 {
+    color: ${({ theme }) => theme.COLORS.LIGHT_300};
+    font-size: 3.2rem;
+    font-weight: 400;
+    margin-bottom: 3.2rem;
+}
 
 
 

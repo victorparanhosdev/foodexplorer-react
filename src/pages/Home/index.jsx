@@ -131,9 +131,6 @@ export function Home() {
     }
   }, []);
 
-  useEffect(() => {
-    console.log(requests);
-  }, [requests]);
 
   return (
     <Container>
