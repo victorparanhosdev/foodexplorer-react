@@ -10,14 +10,33 @@ export function Requests() {
   const [statecart, setStateCart] = useState([])
   const navigate = useNavigate()
   const baseURL = api.defaults.baseURL;
-  function removeItem(id){
-    console.log(id)
+  function removeItem(item) {
+    
     setStateCart(prevState => {
-      console.log(prevState)
-      prevState.map(item=> {
-        console.log(item)
-      })
-  })
+      return prevState.map(itemMap => {
+        if (itemMap.id === item.id) {
+          return { ...itemMap, quantity: itemMap.quantity - 1 };
+        }
+        return itemMap;
+      });
+    });
+
+    const HaveData = JSON.parse(localStorage.getItem("@foodrequests")) || [];
+
+    
+   const updated = HaveData.map(itemMap => {
+      if (itemMap.id === item.id) {
+        return { ...itemMap, quantity: itemMap.quantity - 1 };
+      }
+      return itemMap;
+    })
+
+
+    localStorage.setItem("@foodrequests", JSON.stringify(updated))
+    
+    
+
+   
   }
 
   useEffect(() => {
@@ -34,33 +53,29 @@ export function Requests() {
       <Content>
 
         <div>
-        <h1>Meu Pedido</h1>
-        <div>
-        {statecart && statecart.map(item=> {
+          <h1>Meu Pedido</h1>
+          <div>
+            {statecart && statecart.map(item => {
+              const itemsArray = Array.from({ length: item.quantity }, (_, index) => (
+                <div key={`${item.id}-${index}`} className="card">
+                  <img src={`${baseURL}files/${item.imgurl}`} alt="" />
+                  <div>
+                    <div>
+                      <h2>1x {item.name}</h2>
+                      <span>R${item.price}</span>
+                    </div>
+                    <button onClick={() => removeItem(item)} type="button">Excluir</button>
+                  </div>
+                </div>
+              ));
+              return itemsArray;
+            })}
+            <div className="viewtotal">Total R$ 103,00</div>
 
-          return (
-           Array(item.quantity).fill(<div key={String(item.id)} className="card">
-           <img src={`${baseURL}files/${item.imgurl}`} alt="" />
-           <div>
-             <div>
-             <h2>1x {item.name}</h2>
-             <span>R${item.price}</span>
-             </div>
-             <button onClick={()=> removeItem(item.id)} type="button">Excluir</button>
-           </div>
-         </div>)
-          )
-
-
-
-        })  
-}
-          <div className="viewtotal">Total R$ 103,00</div>
+          </div>
 
         </div>
 
-        </div>
- 
         <div>
           <h1>Pagamento</h1>
 
