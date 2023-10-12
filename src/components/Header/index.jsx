@@ -12,29 +12,20 @@ import { useEffect, useState } from "react"
 export function Header({ onSearch, onFavorites, onRequests }) {
     const navigate = useNavigate()
     const { signOut, user } = useAuth()
-
-
- 
-   
-
+    const [statecart, setStateCart] = useState()
     function handleSignOut() {
         signOut()
         navigate("/")
 
     }
-    
 
-    
     useEffect(()=> {
-
         const HaveData = JSON.parse(localStorage.getItem("@foodrequests")) || [];
-
         if(HaveData){
-            console.log(HaveData)
+            setStateCart(HaveData)
         }
 
-
-    },[])
+    },[onRequests])
 
     return (
         <Container>
@@ -54,7 +45,7 @@ export function Header({ onSearch, onFavorites, onRequests }) {
                 {user.isAdmin ? <Link to="/newdish" className="btn-newdish">Novos Pratos</Link> :
                     <>
                         {onFavorites && onFavorites.length > 0 && <Link to="/favorites">Meus favoritos</Link>}
-                        <Link to="/requests" className="btn-pedido"><PiReceipt size={24} />{onRequests && onRequests.length > 0 ? `Pedidos (${onRequests.length})` : "Pedidos (0)" }</Link>
+                        <Link to="/requests" className="btn-pedido"><PiReceipt size={24} />{statecart && statecart.length > 0 ? `Pedidos (${statecart.length})` : "Pedidos (0)" }</Link>
                     </>
                 }
 
