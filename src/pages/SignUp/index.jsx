@@ -4,7 +4,7 @@ import FoodExplorer from "../../assets/Polygon1.svg"
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { api } from "../../services/api"
-
+import {toast} from "react-toastify"
 
 export function SignUp() {
 
@@ -16,14 +16,23 @@ export function SignUp() {
     async function handleCreateAccount(event){
         event.preventDefault()
         if(!name || !email || !password) {
-            return alert("Por favor preencha todas as informações")
+            return toast.warning("Por favor preencha todas as informações", {
+                autoClose: 1500,
+                pauseOnHover: false
+            })
         }
         try{
             await api.post("/users", {name, email, password})
+            toast.success("Usuário Cadastrado com Sucesso", {
+                autoClose: 1000,
+                pauseOnHover: false
+            })
             navigate("/")
-            alert("Usuário Cadastrado com Sucesso")
         }catch(error){
-            return alert(error.response.data.message)
+            return toast.error(error.response.data.message, {
+                autoClose: 1500,
+                pauseOnHover: false
+            })
         }
     }
 

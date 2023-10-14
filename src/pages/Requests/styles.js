@@ -68,6 +68,11 @@ h1 {
                 color: ${({ theme }) => theme.COLORS.TINTS_TOMATO_400};
                 font-size: 1.2rem;
                 font-family: 'Robotto',sans-serif;
+                transition: color 0.2s;
+        
+        &:hover {
+            color: ${({theme})=> theme.COLORS.TINTS_TOMATO_HOVER};
+        }
             }
         }
 
@@ -178,6 +183,11 @@ tbody {
        justify-content: center;
        gap: 0.8rem;
        height: 5.6rem;
+       transition: background 0.3s;
+        
+        &:hover {
+        background: ${({theme})=> theme.COLORS.TINTS_TOMATO_HOVER};
+        }
     }
 
     .v-cartao {

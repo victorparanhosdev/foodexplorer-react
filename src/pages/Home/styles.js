@@ -149,6 +149,7 @@ export const Content = styled.section`
         border-radius: 0.5rem;
         border: none;
         cursor: pointer;
+      
        }
     
     }

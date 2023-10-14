@@ -5,7 +5,7 @@ import { MdArrowBackIos } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { LuUpload } from "react-icons/lu";
 import { NewTag } from "../../components/NewTag";
-
+import {toast} from "react-toastify"
 import { api } from "../../services/api";
 import { useState } from "react";
 
@@ -31,7 +31,7 @@ export function NewDish() {
 
   function handleClickNewIngredients() {
     if (newingredients === "") {
-      return alert("Não aceitamos ingrediente vazio");
+      return toast.warning("Não aceitamos ingrediente vazio", {theme: "light",  autoClose: 1500, pauseOnHover: false});
     }
 
     setIngredients((prevState) => [...prevState, newingredients]);
@@ -65,32 +65,26 @@ export function NewDish() {
 
 
     if(!file) {
-      return alert("Selecione uma imagem para cadastrar o Prato")
+      return toast.warning("Selecione uma imagem para cadastrar o Prato", {theme: "light",  autoClose: 1500, pauseOnHover: false})
     }
     if (!name) {
-      return alert("Preencha o campo Nome para seguir com o cadastro");
+      return toast.warning("Preencha o campo 'Nome' para seguir com o cadastro", {theme: "light",  autoClose: 1500, pauseOnHover: false});
     }
 
     if (newingredients) {
-      return alert("Você digitou o ingrediente mas não adicionou");
+      return toast.warning("Você digitou o ingrediente mas não adicionou", {theme: "light",  autoClose: 1500, pauseOnHover: false});
     }
 
     if (!price) {
-      return alert(
+      return toast.warning(
         `Coloque um Preço para a ${transformarParaSingular(
           category
-        )} e use "." para separar os centavos`
+        )}`, {theme: "light",  autoClose: 1500, pauseOnHover: false}
       );
     }
-    if (!price) {
-      return alert(
-        `Coloque um Preço para a ${transformarParaSingular(
-          category
-        )} e use "." para separar os centavos`
-      );
-    }
+
     if (!description) {
-      return alert("Coloque uma descrição");
+      return toast.warning("Coloque uma descrição", {theme: "light",  autoClose: 1500, pauseOnHover: false});
     }
 
     try {
@@ -113,16 +107,15 @@ export function NewDish() {
       formData.append("dishData", JSON.stringify(dishData));
     
       await api.post("/dish", formData);
-    
-      alert("Prato Adicionado com Sucesso!!");
+      toast.success("Prato adicionado com sucesso!!", { icon: "🗑️", theme: "light",  autoClose: 1000, pauseOnHover: false})
       navigate("/");
     
 
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
       } else {
-        alert("Não foi possivel Adicionar o Prato");
+        toast.error("Não foi possivel adicionar o prato");
       }
     }
 

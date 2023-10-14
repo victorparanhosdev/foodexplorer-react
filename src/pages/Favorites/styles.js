@@ -59,6 +59,11 @@ width: min(112rem, 95%);
     background-color: transparent;
     font-family: 'Robotto',sans-serif;
     font-size: 1.2rem;
+    transition: color 0.2s;
+        
+        &:hover {
+            color: ${({theme})=> theme.COLORS.TINTS_TOMATO_HOVER};
+        }
 
 
  }

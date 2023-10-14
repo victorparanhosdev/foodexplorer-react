@@ -3,14 +3,14 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { useNavigate, Link } from "react-router-dom";
+import {toast} from "react-toastify"
 import { MdPix } from "react-icons/md"
 import { PiCreditCard, PiReceipt } from "react-icons/pi"
 
 export function Requests() {
   const [statecart, setStateCart] = useState([])
   const [statePayment, setStatePayment] = useState("pix")
-  const navigate = useNavigate()
+
   const baseURL = api.defaults.baseURL;
   function handlePayment(state) {
 
@@ -38,10 +38,13 @@ export function Requests() {
       if (itemMap.id === item.id) {
         if (itemMap.quantity - 1 <= 0) {
           // Se a quantidade for menor ou igual a zero, não retorne o itemMap
+          toast.error("item removido", { icon: "🗑️", theme: "light",  autoClose: 400, pauseOnHover: false})
           return null;
         } else {
           // Se a quantidade for maior que zero, decremente a quantidade
+          toast.error("item removido", { icon: "🗑️", theme: "light",  autoClose: 400, pauseOnHover: false})
           return { ...itemMap, quantity: itemMap.quantity - 1 };
+       
         }
       }
       return itemMap;

@@ -155,6 +155,10 @@ export const Content = styled.section`
       padding: 1.2rem 2.4rem;
       border-radius: 0.5rem;
       font-weight: 400;
+      transition: background 0.3s;
+    &:hover {
+        background: ${({theme})=> theme.COLORS.TINTS_TOMATO_100};
+    }
     }
   }
 `;

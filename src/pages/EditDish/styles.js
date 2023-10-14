@@ -110,7 +110,7 @@ export const Content = styled.section`
           align-items: center;
           gap: 1.6rem;
           padding: 0.8rem;
-          background: ${({theme})=> theme.COLORS.DARK_800};
+          background: ${({ theme }) => theme.COLORS.DARK_800};
           border-radius: 0.8rem;
         }
       }
@@ -155,13 +155,22 @@ export const Content = styled.section`
         padding: 1.2rem 2.4rem;
         border-radius: 0.5rem;
         font-weight: 400;
+        
       }
 
       button:nth-child(1){
         background: ${({ theme }) => theme.COLORS.DARK_800};
+        transition: background 0.3s;
+    &:hover {
+        background: ${({ theme }) => theme.COLORS.TINTS_TOMATO_100};
+    }
       }
       button:nth-child(2) {
         background: ${({ theme }) => theme.COLORS.TINTS_TOMATO_400};
+        transition: background 0.3s;
+    &:hover {
+        background: ${({ theme }) => theme.COLORS.TINTS_TOMATO_100};
+    }
       }
     }
   }

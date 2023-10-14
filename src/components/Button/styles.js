@@ -29,6 +29,11 @@ export const Container = styled.div`
     border-radius: 0.5rem;
     border: none;
     cursor: pointer;
+    transition: background 0.3s;
+        
+        &:hover {
+        background: ${({theme})=> theme.COLORS.TINTS_TOMATO_HOVER};
+        }
   }
 
 `;

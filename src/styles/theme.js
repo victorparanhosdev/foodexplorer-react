@@ -30,7 +30,8 @@ export default {
         TINTS_MINT_100: "#04D361",
 
         TINTS_CAKE_100: "#065E7C",
-        TINTS_CAKE_200: "#82F3FF"
+        TINTS_CAKE_200: "#82F3FF",
+        TINTS_TOMATO_HOVER: "#8b0413"
     }
   
 }

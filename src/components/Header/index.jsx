@@ -7,13 +7,14 @@ import { useAuth } from "../../hooks/auth"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
-
+import { toast } from "react-toastify"
 
 export function Header({ onSearch, onFavorites, onRequests, onStatecart }) {
     const navigate = useNavigate()
     const { signOut, user } = useAuth()
     const [statecart, setStateCart] = useState([])
     function handleSignOut() {
+        toast.info(`Até logo, ${user.name}`, {theme: "light", icon: "👋🏼",  pauseOnHover: false,  autoClose: 800})
         signOut()
         navigate("/")
 

@@ -4,6 +4,7 @@ import { Footer } from "../../components/Footer";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useNavigate, Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export function Favorites() {
   const [data, setData] = useState([]);
@@ -15,7 +16,8 @@ export function Favorites() {
     const updated = data.filter(itemOld=> itemOld.id !== dados.id)
     setData(updated)
     localStorage.setItem("@FavoritesFoodExplorer", JSON.stringify(updated))
-
+    toast.error("removido dos Favoritos", { icon: "🤍", theme: "light",  autoClose: 400,
+    pauseOnHover: false });
     const storedFavorites = JSON.parse(localStorage.getItem("@FavoritesFoodExplorer")) || []
     if(storedFavorites.length === 0){
       navigate("/")

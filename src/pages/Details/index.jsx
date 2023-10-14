@@ -7,7 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
-
+import { toast } from "react-toastify";
 export function Details() {
   const { user } = useAuth()
   const params = useParams()
@@ -17,45 +17,57 @@ export function Details() {
   const [data, setData] = useState("")
   const [quantity, setQuantity] = useState(1)
   const [defaultData, setdefaultData] = useState([])
+  const [requests, setRequests] = useState([])
 
-  function handleEditDish(){
-      navigate(`/editdish/${params.id}`)
+
+
+
+  function handleEditDish() {
+    navigate(`/editdish/${params.id}`)
   }
- 
+
   function cartItem() {
 
-    
-     const DadosOld = JSON.parse(localStorage.getItem("@foodrequests")) || [];
-      const HaveItem = DadosOld.some(item=> item.id === params.id)
 
-     if(!HaveItem){
-  
+    const DadosOld = JSON.parse(localStorage.getItem("@foodrequests")) || [];
+    const HaveItem = DadosOld.some(item => item.id === Number(params.id))
 
-      const newArray = [data.dish,...DadosOld]
-      console.log(data.dish)
-      //localStorage.setItem("@foodrequests", JSON.stringify(newArray))
-       
 
-    }else {
-     /*  const newArray = DadosOld.map(newItem=> {
-        if(newItem.id == params.id){
-          return {...newItem, quantity: newItem.quantity + quantity}
+
+    if (!HaveItem) {
+
+      const newData = {
+        ...defaultData, quantity
+      }
+      const newArray = [newData, ...DadosOld]
+      localStorage.setItem("@foodrequests", JSON.stringify(newArray))
+      setRequests(prevState => [...prevState, newData])
+      toast.success(`${`${quantity === 1 ? "prato adicionado com sucesso" : `prato adicionadocom ${quantity} itens`}`}`, {theme: "light",  autoClose: 800,
+      pauseOnHover: false });
+
+    } else {
+
+      const newArray = DadosOld.map(newItem => {
+        if (newItem.id === Number(params.id)) {
+          return { ...newItem, quantity: newItem.quantity + quantity }
         }
         return newItem
       })
 
       localStorage.setItem("@foodrequests", JSON.stringify(newArray))
- */
+      setRequests(newArray)
+      toast.success(`+${quantity} itens adicionado`, {theme: "light",  autoClose: 500,
+      pauseOnHover: false });
     }
 
 
 
-      
 
 
-  
-    
-    
+
+
+
+
   }
 
   function ButtonBack(event) {
@@ -81,6 +93,8 @@ export function Details() {
 
 
   useEffect(() => {
+
+
     async function fetchDetails() {
 
       const response = await api.get(`/dish/${params.id}`)
@@ -92,10 +106,10 @@ export function Details() {
 
   }, [])
 
-
   return (
     <Container>
-      <Header />
+      <Header onRequests={requests} />
+
       {data && <Content>
         <div className="box-btn-back">
           <button type="button" onClick={(e) => ButtonBack(e)}>
@@ -106,13 +120,14 @@ export function Details() {
 
         <div className="dish">
           <div>
-            <img src={`${api.defaults.baseURL}files/${data.dish.imgurl}`} alt="" />
+            <img src={`${api.defaults.baseURL}files/${data.imgurl}`} alt="" />
           </div>
 
           <div>
-            <h1>{data.dish.name}</h1>
+            <h1>{data.name}</h1>
             <p>
-              {data.dish.description}
+
+              {data.description}
             </p>
             {(data.ingredients.length > 0) && <div className="tags-food">
               {data.ingredients.map(item => {
@@ -133,7 +148,7 @@ export function Details() {
                   <FiPlus />
                 </button>
               </div>
-                <button onClick={cartItem} className="btn-incluir" type="button">incluir • R${Number(data.dish.price) * quantity}</button></>
+                <button onClick={cartItem} className="btn-incluir" type="button">incluir • R${Number(data.price) * quantity}</button></>
               }
             </div>
 

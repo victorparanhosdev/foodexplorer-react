@@ -7,6 +7,8 @@ import { LuUpload } from "react-icons/lu";
 import { useState, useEffect } from "react";
 import { NewTag } from "../../components/NewTag";
 import { api } from "../../services/api";
+import { toast } from "react-toastify";
+
 export function EditDish() {
   const navigate = useNavigate();
   const params = useParams();
@@ -15,7 +17,6 @@ export function EditDish() {
   const [stateingredients, setIngredients] = useState([]);
 
   const [newingredients, setNewIngredients] = useState("");
-
   const [file, setFile] = useState(null);
   const [name, setName] = useState(null);
   const [category, setCategory] = useState(null);
@@ -43,13 +44,22 @@ export function EditDish() {
 
 
     await api.put(`/dish/${params.id}`, editDish).then(() => {
-      alert("Prato editado com sucesso!!")
+      toast.success("Prato editado com sucesso!!", {
+        autoClose: 500,
+        pauseOnHover: false
+      })
       navigate("/")
     }).catch(error => {
       if (error.response) {
-        alert(error.response.data.message)
+        toast.error(error.response.data.message, {
+          autoClose: 500,
+          pauseOnHover: false
+        })
       } else {
-        alert("error internal")
+        toast.error("error internal", {
+          autoClose: 500,
+          pauseOnHover: false
+        })
       }
     })
 
@@ -61,13 +71,13 @@ export function EditDish() {
     const isOk = confirm("Tem certeza que deseja excluir ?")
     if (isOk) {
       await api.delete(`/dish/${params.id}`).then(() => {
-        alert("Prato excluido com sucesso")
+        toast.error("Prato excluido com sucesso", { icon: "🗑️", theme: "light",  autoClose: 600, pauseOnHover: false})
         navigate("/")
       }).catch(error => {
         if (error.response) {
-          alert(error.response.data.message)
+          toast.error(error.response.data.message, {theme: "light",  autoClose: 1200, pauseOnHover: false})
         } else {
-          alert("Error Internal")
+          toast.error("Error Internal", {theme: "light",  autoClose: 600, pauseOnHover: false})
         }
       });
     }
@@ -75,7 +85,7 @@ export function EditDish() {
   }
   function handleClickNewIngredients() {
     if (newingredients === "") {
-      return alert("Não aceitamos ingrediente vazio");
+      return toast.warning("Não aceitamos ingrediente vazio", {theme: "light",  autoClose: 600, pauseOnHover: false});
     }
 
     setIngredients((prevState) => [...prevState, newingredients]);
@@ -121,7 +131,7 @@ export function EditDish() {
                 <span>Imagem do prato</span>
                 <label htmlFor="form-controls">
                   <LuUpload size={24} />
-                  {file ? file.name : data.dish.imgurl}
+                  {file ? file.name : data.imgurl}
                 </label>
                 <input onChange={e => setFile(e.target.files[0])} type="file" id="form-controls" />
               </div>
@@ -130,14 +140,14 @@ export function EditDish() {
                 <span>Nome</span>
                 <input onChange={e => setName(e.target.value)}
                   type="text"
-                  defaultValue={data.dish.name}
+                  defaultValue={data.name}
                   placeholder="Ex.: Salada Ceasar"
                 />
               </div>
 
               <div>
                 <span>Categoria</span>
-                <select onChange={e => setCategory(e.target.value)} name="" id="" defaultValue={data.dish.category}>
+                <select onChange={e => setCategory(e.target.value)} name="" id="" defaultValue={data.category}>
                   <option value="Refeições">Refeições</option>
                   <option value="Sobremesas">Sobremesas</option>
                   <option value="Bebidas">Bebidas</option>
@@ -167,14 +177,14 @@ export function EditDish() {
               </div>
               <div>
                 <span>Preço</span>
-                <input onChange={(e) => setPrice(e.target.value)} type="number" defaultValue={data.dish.price} placeholder="R$00.00" />
+                <input onChange={(e) => setPrice(e.target.value)} type="number" defaultValue={data.price} placeholder="R$00.00" />
               </div>
             </div>
 
             <div>
               <span>Descrição</span>
               <textarea onChange={(e) => setDescription(e.target.value)}
-                defaultValue={data.dish.description}
+                defaultValue={data.description}
                 placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
                 name=""
                 id=""

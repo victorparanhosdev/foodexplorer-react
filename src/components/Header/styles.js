@@ -36,6 +36,10 @@ button, a {
     display: flex;
     align-items: center;
     gap: 0.8rem;
+    transition: background 0.3s;
+    &:hover {
+        background: ${({theme})=> theme.COLORS.TINTS_TOMATO_HOVER};
+    }
 }
 
 > a:nth-child(1) {

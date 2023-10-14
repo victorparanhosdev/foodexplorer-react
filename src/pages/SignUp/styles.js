@@ -49,6 +49,11 @@ button {
     border-radius: 0.5rem;
     margin-bottom: 3.2rem;
     cursor: pointer;
+    transition: background 0.3s;
+        
+        &:hover {
+        background: ${({theme})=> theme.COLORS.TINTS_TOMATO_HOVER};
+        }
    }
 
 a {
