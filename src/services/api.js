@@ -1,5 +1,5 @@
 import Axios from "axios"
 
 export const api = Axios.create({
-    baseURL: "http://localhost:4000/"
+    baseURL: "https://foodexplorer-api-ghd3.onrender.com/"
 })
