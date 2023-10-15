@@ -24,6 +24,7 @@ export const Container = styled.div`
         &::placeholder{
             color: ${({theme})=> theme.COLORS.LIGHT_500};
             font-family: 'Roboto', sans-serif;
+            font-size: clamp(1.4rem, 1vw + 1rem, 1.6rem)
         }
     }
 

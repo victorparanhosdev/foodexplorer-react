@@ -22,6 +22,31 @@ background: ${({theme})=> theme.COLORS.DARK_400};
 }
 
 
+@media (max-width: 425px){
+ display: grid;
+ place-content: center;
+ background: ${({theme})=> theme.COLORS.DARK_700};
+
+ >div {
+
+    span {
+        font-size: 3.7rem;
+    }
+
+ }
+
+ form {
+    padding: 0;
+ }
+
+ form h1 {
+    display: none;
+ }
+
+}
+
+
+
 `
 
 export const Form = styled.form`

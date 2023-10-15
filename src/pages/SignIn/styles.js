@@ -16,9 +16,33 @@ background: ${({theme})=> theme.COLORS.DARK_400};
     span {
         font-family: "Roboto", sans-serif;
         font-weight: 700;
-        font-size: 4.2rem;
+        font-size: clamp(3.7rem, 1vw + 1rem, 4.2rem);
         color: ${({theme})=> theme.COLORS.LIGHT_100};
     }
+}
+
+
+@media (max-width: 425px){
+ display: grid;
+ place-content: center;
+ background: ${({theme})=> theme.COLORS.DARK_700};
+
+ >div {
+
+    span {
+        font-size: 3.7rem;
+    }
+
+ }
+
+ form {
+    padding: 0;
+ }
+
+ form h1 {
+    display: none;
+ }
+
 }
 
 
@@ -67,5 +91,7 @@ a {
     text-align: center;
     cursor: pointer;
 }
+
+
 
 `
