@@ -38,5 +38,38 @@ align-items: center;
 }
 
 
+@media (max-width: 425px){
+
+
+    > div {
+
+        > p{
+            font-size: 1.2rem;
+        }
+        .logofooter {
+            gap: 0.5rem;
+
+            span {
+        font-size: 1.52rem;
+        }
+        svg {
+            height: 1.8rem;
+            width: 2.2rem;
+        }
+
+            }
+
+    
+
+
+
+    }
+
+}
+
+
+
+
+
 
 `

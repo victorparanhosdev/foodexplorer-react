@@ -5,6 +5,11 @@ export const Container = styled.header`
    display: flex;
    align-items: center;
 
+
+
+
+
+
 nav {
 
     display: flex;
@@ -100,7 +105,30 @@ button, a {
 
 
 
+@media (max-width: 425px){
+    nav {display: none}
 
+    .menu-hamburguer {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+
+    
+    .line-one, .line-two, .line-three {
+        background-color: white;
+        width: 100%;
+        height: 1px;
+
+    }
+
+
+
+    }
+
+
+
+
+}
 
 
 `

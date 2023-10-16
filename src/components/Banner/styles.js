@@ -37,6 +37,31 @@ export const Container = styled.div`
         }
     }
 
+
+@media (max-width: 425px) {
+    width: 90%;
+    height: auto;
+    margin-top:4.4rem;
+    margin-right: 1.5rem;
+    img {
+        margin-left: -3rem;
+        margin-top: 0rem;
+        width: 19.1rem;
+
+    }
+
+ > div{
+ 
+        
+        h1 {
+            font-size: 1.8rem;
+        }
+        p {
+          font-size: 1.2rem;
+        }
+    } 
+}
+
    
     
 

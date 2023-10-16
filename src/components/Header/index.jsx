@@ -30,6 +30,20 @@ export function Header({ onSearch, onFavorites, onRequests, onStatecart }) {
 
     return (
         <Container>
+
+            <menu className="menu-mobile">
+
+
+            <div className="menu-hamburguer">
+                <div className="line-one"></div>
+                <div className="line-two"></div>
+                <div className="line-three"></div>
+            </div>
+
+
+            </menu>
+          
+         
             <nav>
                 <Link to="/">
                     <img src={FoodExplorer} alt="" />
@@ -42,7 +56,7 @@ export function Header({ onSearch, onFavorites, onRequests, onStatecart }) {
                     <input onChange={e => onSearch(e.target.value)} type="text" placeholder="Busque por pratos ou ingredientes" />
                 </div>
 
-
+                
                 {user.isAdmin ? <Link to="/newdish" className="btn-newdish">Novos Pratos</Link> :
                     <>
                         {onFavorites && onFavorites.length > 0 && <Link to="/favorites">Meus favoritos</Link>}
