@@ -13,6 +13,14 @@ export function Header({ onSearch, onFavorites, onRequests, onStatecart }) {
   const navigate = useNavigate();
   const { signOut, user } = useAuth();
   const [statecart, setStateCart] = useState([]);
+
+  function menuMobile(){
+    document.querySelector("menu.menu-mobile").classList.toggle("active")
+
+
+
+  }
+
   function handleSignOut() {
     toast.info(`Até logo, ${user.name}`, {
       theme: "light",
@@ -34,11 +42,12 @@ export function Header({ onSearch, onFavorites, onRequests, onStatecart }) {
   return (
     <Container>
       <menu className="menu-mobile">
-        <div className="menu-hamburguer">
+        <div onClick={menuMobile} className="menu-hamburguer">
           <div className="line-one"></div>
           <div className="line-two"></div>
           <div className="line-three"></div>
         </div>
+    
 
         <Link className="logo" to="/">
           <img src={FoodExplorer} alt="" />
@@ -53,6 +62,9 @@ export function Header({ onSearch, onFavorites, onRequests, onStatecart }) {
         </Link>
 
         <div className="menu-toggle">
+
+        <div className="menu-expand">
+
           <div>
             <FiSearch size={24} />
             <input
@@ -78,6 +90,10 @@ export function Header({ onSearch, onFavorites, onRequests, onStatecart }) {
             Sair
           </button>
         </div>
+
+          </div>
+          
+
       </menu>
 
       <nav>

@@ -5,12 +5,18 @@ export const Container = styled.div`
   min-height: 100vh;
   grid-template-rows: 10.4rem auto 7.7rem;
   background: ${({ theme }) => theme.COLORS.DARK_400};
+  @media (max-width: 430px){
+    grid-template-rows: auto 7.7rem;
+}
 `;
 
 export const Content = styled.section`
   padding-block: 4rem;
   width: min(112rem, 95%);
   margin: 0 auto;
+  @media (max-width: 430px){
+    margin-top: 10.4rem;
+}
 
   .box-btn-back {
     button {
@@ -51,8 +57,11 @@ export const Content = styled.section`
     > div {
       display: flex;
       gap: 3.2rem;
-      justify-content: space-between;
+     
       align-items: center;
+
+
+
     }
 
     > div:nth-child(1) {
@@ -161,4 +170,22 @@ export const Content = styled.section`
     }
     }
   }
+
+
+
+  @media (max-width: 430px){
+    .edit-content >div {
+      display: grid;
+        gap: 2.4rem;
+        justify-content: stretch;
+    }
+
+    .edit-content >div:nth-child(1) >div:nth-child(3) select {
+      width: 100%;
+    }
+    .edit-content >button {
+      width: 100%;
+    }
+ 
+     }
 `;

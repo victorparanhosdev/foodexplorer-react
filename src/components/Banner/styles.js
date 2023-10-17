@@ -40,8 +40,8 @@ export const Container = styled.div`
 
 @media (max-width: 430px) {
     width: 90%;
-    height: auto;
-    margin-top:4.4rem;
+    height: 12rem;
+    margin-top:18.4rem;
     margin-right: 1.5rem;
     img {
         margin-left: -3rem;

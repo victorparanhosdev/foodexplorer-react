@@ -6,6 +6,10 @@ display: grid;
 grid-template-rows: 10.4rem auto 7.7rem;
 grid-auto-columns: 100%;
 background: ${({ theme }) => theme.COLORS.DARK_400};
+@media (max-width: 430px){
+    grid-template-rows: auto 7.7rem;
+    
+}
 
 `
 
@@ -16,6 +20,12 @@ width: min(112rem, 95%);
 display: flex;
 justify-content: space-between;
 gap: 7.5rem;
+@media (max-width: 430px){
+    justify-content: stretch;
+    
+}
+
+
 .selected {
     background-color:  ${({ theme }) => theme.COLORS.DARK_800};
 }
@@ -90,6 +100,13 @@ h1 {
 
 
 }
+
+@media (max-width: 430px){
+    margin-top: 10.4rem;
+    display: grid;
+    width: 100%;
+}
+
 
 `
 
@@ -208,7 +225,14 @@ tbody {
 }
 
 
-
+@media (max-width: 430px){
+    
+    table {
+        width: 100%;
+       
+    }
+   
+}
 
 
 `
