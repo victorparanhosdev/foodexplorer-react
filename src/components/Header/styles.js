@@ -5,8 +5,50 @@ export const Container = styled.header`
    display: flex;
    align-items: center;
 
+.menu-mobile {
+    display: none;
+}
+
+.logo {
+    display: flex;
+    gap: 1rem;
+    img {
+        width: 3rem;
+        height: 3rem;
+    }
+    span {
+        white-space: nowrap;
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+        font-size: 2.4rem;
+        color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    }
+    .admin {
+        color: ${({theme})=> theme.COLORS.TINTS_CAKE_200};
+        font-family: "Roboto", sans-serif;
+        font-size: 1.2rem;
+        font-weight: 400;
+        text-align: end;
+    }
+}
 
 
+.btn-pedido, .btn-newdish {
+    white-space: nowrap;
+    background: ${({ theme }) => theme.COLORS.TINTS_TOMATO_100};
+    color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    padding: 1.6rem 4.65rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: background 0.3s;
+    &:hover {
+        background: ${({theme})=> theme.COLORS.TINTS_TOMATO_HOVER};
+    }
+}
 
 
 
@@ -30,45 +72,8 @@ button, a {
     
 }
 
-.btn-pedido, .btn-newdish {
-    white-space: nowrap;
-    background: ${({ theme }) => theme.COLORS.TINTS_TOMATO_100};
-    color: ${({ theme }) => theme.COLORS.LIGHT_100};
-    font-weight: 400;
-    font-family: 'Poppins', sans-serif;
-    padding: 1.6rem 4.65rem;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    transition: background 0.3s;
-    &:hover {
-        background: ${({theme})=> theme.COLORS.TINTS_TOMATO_HOVER};
-    }
-}
 
-> a:nth-child(1) {
-    display: flex;
-    gap: 1rem;
-    img {
-        width: 3rem;
-        height: 3rem;
-    }
-    span {
-        white-space: nowrap;
-        font-family: "Roboto", sans-serif;
-        font-weight: 700;
-        font-size: 2.4rem;
-        color: ${({ theme }) => theme.COLORS.LIGHT_100};
-    }
-    .admin {
-        color: ${({theme})=> theme.COLORS.TINTS_CAKE_200};
-        font-family: "Roboto", sans-serif;
-        font-size: 1.2rem;
-        font-weight: 400;
-        text-align: end;
-    }
-}
+
 
 > div:nth-child(2) {
     display: flex;
@@ -105,13 +110,28 @@ button, a {
 
 
 
-@media (max-width: 425px){
+@media (max-width: 430px){
     nav {display: none}
+
+
+
+    menu.menu-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: min(112rem, 95%);
+    margin: auto;
+
+     
+    
 
     .menu-hamburguer {
     width: 3rem;
     height: 3rem;
     display: grid;
+    place-items: center;
+
+    }
 
     
     .line-one, .line-two, .line-three {
@@ -122,8 +142,40 @@ button, a {
     }
 
 
+    .btn-pedido {
+        padding: 0;
+        background: none;
+        position: relative;
+        svg {
+            width: 3.2rem;
+            height: 3.2rem;
+        }
+        span {
+            background-color: ${({ theme }) => theme.COLORS.TINTS_TOMATO_100};
+            font-size: 1.4rem;
+            border-radius: 50%;
+            position: absolute;
+            width: 2rem;
+            height: 2rem;
+            text-align: center;
+            top: -0.5rem;
+            right: -0.5rem;
+        }
+    }
+
+
+
+    .menu-toggle {
+        display: none;
+      
+    }
 
     }
+
+
+    
+
+
 
 
 

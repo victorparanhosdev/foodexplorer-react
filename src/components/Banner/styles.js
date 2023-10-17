@@ -38,7 +38,7 @@ export const Container = styled.div`
     }
 
 
-@media (max-width: 425px) {
+@media (max-width: 430px) {
     width: 90%;
     height: auto;
     margin-top:4.4rem;

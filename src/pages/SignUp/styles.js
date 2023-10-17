@@ -22,7 +22,7 @@ background: ${({theme})=> theme.COLORS.DARK_400};
 }
 
 
-@media (max-width: 425px){
+@media (max-width: 430px){
  display: grid;
  place-content: center;
  background: ${({theme})=> theme.COLORS.DARK_700};

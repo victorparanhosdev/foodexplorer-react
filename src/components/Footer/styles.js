@@ -38,7 +38,7 @@ align-items: center;
 }
 
 
-@media (max-width: 425px){
+@media (max-width: 430px){
 
 
     > div {
