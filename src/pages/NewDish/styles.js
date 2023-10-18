@@ -166,7 +166,7 @@ export const Content = styled.section`
       font-weight: 400;
       transition: background 0.3s;
     &:hover {
-        background: ${({theme})=> theme.COLORS.TINTS_TOMATO_100};
+        background: ${({theme})=> theme.COLORS.TINTS_TOMATO_200};
     }
     }
   }

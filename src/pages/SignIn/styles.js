@@ -78,8 +78,13 @@ button {
     margin-bottom: 3.2rem;
     cursor: pointer;
     transition: background 0.3s;
+
+    >div {
+        justify-content: center;
+    }
+
     &:hover {
-        background: ${({theme})=> theme.COLORS.TINTS_TOMATO_HOVER};
+        background: ${({theme})=> theme.COLORS.TINTS_TOMATO_200};
     }
 }
 

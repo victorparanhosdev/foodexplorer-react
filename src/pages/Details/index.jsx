@@ -43,7 +43,8 @@ export function Details() {
       localStorage.setItem("@foodrequests", JSON.stringify(newArray))
       setRequests(prevState => [...prevState, newData])
       toast.success(`${`${quantity === 1 ? "prato adicionado com sucesso" : `prato adicionadocom ${quantity} itens`}`}`, {theme: "light",  autoClose: 800,
-      pauseOnHover: false });
+      pauseOnHover: false,
+      position: "bottom-right" });
 
     } else {
 
@@ -57,7 +58,8 @@ export function Details() {
       localStorage.setItem("@foodrequests", JSON.stringify(newArray))
       setRequests(newArray)
       toast.success(`+${quantity} itens adicionado`, {theme: "light",  autoClose: 500,
-      pauseOnHover: false });
+      pauseOnHover: false,
+      position: "bottom-right" });
     }
 
 
@@ -141,11 +143,11 @@ export function Details() {
             <div className="box-incluir">
               {user.isAdmin ? <button onClick={handleEditDish} className="btn-incluir" type="button">Editar prato</button> : <><div>
                 <button onClick={minusButton} type="button">
-                  <FiMinus />
+                  <FiMinus size={24}/>
                 </button>
                 <input type="text" value={String(quantity).padStart(2, '0')} readOnly />
                 <button onClick={maxButton} type="button">
-                  <FiPlus />
+                  <FiPlus size={24}/>
                 </button>
               </div>
                 <button onClick={cartItem} className="btn-incluir" type="button">incluir • R${Number(data.price) * quantity}</button></>

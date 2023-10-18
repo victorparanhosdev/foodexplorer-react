@@ -71,14 +71,13 @@ export const Content = styled.section`
     gap: 1.5rem;
     place-items: center;
 
-    border: none;
-    background: transparent;
+    
 
     div.dish {
     width: 17.6rem;
     height: 17.6rem;
     margin: auto;
-  
+        
 
     svg {
         position: absolute;
@@ -96,10 +95,13 @@ export const Content = styled.section`
     }
 
 
-    > h1 {
+    .btn-showdish {
     font-size: 2.4rem;
     font-weight: 700;
     text-align: center;
+    color: ${({ theme }) => theme.COLORS.LIGHT_300};
+    background-color: transparent;
+    border: none;
 
     }
 
@@ -112,7 +114,7 @@ export const Content = styled.section`
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow: hidden;
-    text-align: start;
+    text-align: center;
     }
     > span {
         color: ${({theme})=> theme.COLORS.TINTS_CAKE_200};
@@ -158,6 +160,34 @@ export const Content = styled.section`
        }
     
     }
+
+}
+
+@media (max-width: 430px){
+    .card {
+        width: 21rem;
+        margin-right: 1.6rem !important ;
+        min-height: 29.2rem;
+        place-content: stretch;
+    }
+    .showdish div.dish {
+        width: 8.8rem;
+        height: 8.8rem;
+    }
+    .showdish >h1 {
+    font-size: 1.4rem;
+    }
+    .showdish > p {
+        display: none;
+    }
+
+    .showdish .btn-showdish {
+        font-size: 1.4rem;
+    }
+    .swiper-button-prev:after, .swiper-button-next:after{
+        display: none;
+    }
+
 
 }
 

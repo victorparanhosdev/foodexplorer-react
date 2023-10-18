@@ -46,7 +46,7 @@ export const Container = styled.header`
     gap: 0.8rem;
     transition: background 0.3s;
     &:hover {
-      background: ${({ theme }) => theme.COLORS.TINTS_TOMATO_HOVER};
+      background: ${({ theme }) => theme.COLORS.TINTS_TOMATO_200};
     }
   }
 
@@ -110,7 +110,7 @@ export const Container = styled.header`
 
     menu.menu-mobile {
       display: flex;
-      justify-content: space-between;
+
       align-items: center;
       width: min(112rem, 95%);
       margin: auto;
@@ -150,6 +150,9 @@ export const Container = styled.header`
           top: -0.5rem;
           right: -0.5rem;
         }
+      }
+      .logo {
+        padding-inline: 6.5rem;
       }
       .logo span{
         display: flex;

@@ -168,14 +168,14 @@ export const Content = styled.section`
         background: ${({ theme }) => theme.COLORS.DARK_800};
         transition: background 0.3s;
     &:hover {
-        background: ${({ theme }) => theme.COLORS.TINTS_TOMATO_100};
+        background: ${({ theme }) => theme.COLORS.TINTS_TOMATO_200};
     }
       }
       button:nth-child(2) {
         background: ${({ theme }) => theme.COLORS.TINTS_TOMATO_400};
         transition: background 0.3s;
     &:hover {
-        background: ${({ theme }) => theme.COLORS.TINTS_TOMATO_100};
+        background: ${({ theme }) => theme.COLORS.TINTS_TOMATO_200};
     }
       }
     }

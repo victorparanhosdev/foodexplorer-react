@@ -64,6 +64,7 @@ export const Content = styled.section`
       .tags-food {
         margin-top: 2.4rem;
         display: flex;
+        flex-wrap: wrap;
         gap: 1.2rem;
         span {
           background: ${({ theme }) => theme.COLORS.DARK_1000};
@@ -82,12 +83,15 @@ export const Content = styled.section`
     margin-top: 4.8rem;
     > div {
       display: flex;
-
+      
       input,
       button {
         background-color: transparent;
         color: white;
         border: none;
+        display: flex;
+        align-items: center;
+      
       }
 
       input {
@@ -104,6 +108,7 @@ export const Content = styled.section`
       padding: 1.2rem 2.4rem;
       border-radius: 0.5rem;
       border: none;
+      width: 100%;
       cursor: pointer;
       transition: background 0.3s;
 
@@ -116,14 +121,44 @@ export const Content = styled.section`
   @media (max-width: 430px) {
     margin-top: 10.4rem;
 
+
+    div.box-incluir >div input {
+      font-size: 2rem;
+    }
+
+
     .dish {
       display: grid;
-      place-items: center;
-      > div:first-child img {
+  
+
+
+      > div:first-child {
+      
+
+
+        img {
         width: 26.4rem;
         height: 26.4rem;
         margin: auto;
+        }
+
       }
+ 
+      > div:last-child {
+
+
+        >h1{
+        font-size: 2.7rem;
+        }
+        
+   
+      } 
     }
+
+
+
   }
+
+
+
 `;

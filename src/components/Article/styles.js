@@ -13,6 +13,12 @@ export const Container = styled.article`
         margin-bottom: 2.372rem;
     }
 
+    @media (max-width: 430px){
+        > h1 {
+            font-size: 1.8rem;
+        }
+    }
+
 
 
 `

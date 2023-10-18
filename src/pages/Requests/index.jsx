@@ -6,10 +6,12 @@ import { api } from "../../services/api";
 import {toast} from "react-toastify"
 import { MdPix } from "react-icons/md"
 import { PiCreditCard, PiReceipt } from "react-icons/pi"
-
+import emptyCart from "../../assets/empty-cart.svg"
+import { useNavigate } from "react-router-dom";
 export function Requests() {
   const [statecart, setStateCart] = useState([])
   const [statePayment, setStatePayment] = useState("pix")
+  const navigate = useNavigate()
 
   const baseURL = api.defaults.baseURL;
   function handlePayment(state) {
@@ -38,11 +40,13 @@ export function Requests() {
       if (itemMap.id === item.id) {
         if (itemMap.quantity - 1 <= 0) {
           // Se a quantidade for menor ou igual a zero, não retorne o itemMap
-          toast.error("item removido", { icon: "🗑️", theme: "light",  autoClose: 400, pauseOnHover: false})
+          toast.error("item removido", { icon: "🗑️", theme: "light",  autoClose: 400, pauseOnHover: false,
+          position: "bottom-right"})
           return null;
         } else {
           // Se a quantidade for maior que zero, decremente a quantidade
-          toast.error("item removido", { icon: "🗑️", theme: "light",  autoClose: 400, pauseOnHover: false})
+          toast.error("item removido", { icon: "🗑️", theme: "light",  autoClose: 400, pauseOnHover: false,
+          position: "bottom-right"})
           return { ...itemMap, quantity: itemMap.quantity - 1 };
        
         }
@@ -70,7 +74,22 @@ export function Requests() {
     <Container>
       <Header onStatecart={statecart} />
       <Content>
+      {statecart.length === 0 ? <div className="empty-cart">
+        <img src={emptyCart} alt="" />
 
+        <div className="text">
+              <h2>Seu carrinho está vazio</h2>
+              <p>
+                Adicione pratos clicando no botão <strong>Incluir</strong> na página de pratos.
+              </p>
+            </div>
+
+          <button onClick={() => navigate("/")} >Buscar pratos</button>
+        
+        
+        </div> :
+      
+        <>
         <div>
           <h1>Meu Pedido</h1>
           <div>
@@ -96,7 +115,6 @@ export function Requests() {
           </div>
 
         </div>
-
         <PayMent>
           <h1>Pagamento</h1>
 
@@ -145,6 +163,9 @@ export function Requests() {
           </table>
 
         </PayMent>
+        </>
+          
+          }
 
       </Content>
 

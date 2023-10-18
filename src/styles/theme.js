@@ -22,7 +22,7 @@ export default {
         GRADIENT: "#091E26",
 
         TINTS_TOMATO_100: "#750310",
-        TINTS_TOMATO_200: "##92000E",
+        TINTS_TOMATO_200: "#92000E",
         TINTS_TOMATO_300: "#AB222E",        
         TINTS_TOMATO_400: "#AB4D55",
 

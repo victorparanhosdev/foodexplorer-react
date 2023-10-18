@@ -17,7 +17,8 @@ export function Favorites() {
     setData(updated)
     localStorage.setItem("@FavoritesFoodExplorer", JSON.stringify(updated))
     toast.error("removido dos Favoritos", { icon: "🤍", theme: "light",  autoClose: 400,
-    pauseOnHover: false });
+    pauseOnHover: false,
+    position: "bottom-right" });
     const storedFavorites = JSON.parse(localStorage.getItem("@FavoritesFoodExplorer")) || []
     if(storedFavorites.length === 0){
       navigate("/")

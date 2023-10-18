@@ -20,8 +20,54 @@ width: min(112rem, 95%);
 display: flex;
 justify-content: space-between;
 gap: 7.5rem;
+
+.empty-cart {
+
+    width: min(112rem, 95%);
+    margin: auto;
+        img {
+            width: min(100%, 60rem);
+        }
+
+
+
+
+    .text {
+        h2 {
+            color: ${({theme})=> theme.COLORS.LIGHT_100};
+        }
+        p {
+            color: ${({theme})=> theme.COLORS.LIGHT_100};
+            margin-top: 1rem;
+            strong {
+                color: ${({theme})=> theme.COLORS.TINTS_TOMATO_300};
+            }
+        }
+
+      
+    }
+
+    button {
+            border: none;
+            background-color: ${({theme})=> theme.COLORS.TINTS_TOMATO_100};
+            padding: 1rem;
+            border-radius: 0.5rem;
+            color: ${({theme})=> theme.COLORS.LIGHT_100};
+            margin-top: 1rem;
+            transition: background 0.2s;
+     
+            &:hover {
+                background-color: ${({theme})=> theme.COLORS.TINTS_TOMATO_200};
+            }
+        }
+}
+
+
 @media (max-width: 430px){
     justify-content: stretch;
+    .empty-cart button {
+        width: 100%;
+    }
     
 }
 

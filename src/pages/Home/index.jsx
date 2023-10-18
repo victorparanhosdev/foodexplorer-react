@@ -59,10 +59,11 @@ export function Home() {
         JSON.stringify(updatedFavorites)
       );
       toast.error("removido dos Favoritos", { icon: "🤍", theme: "light",  autoClose: 400,
-      pauseOnHover: false });
+      pauseOnHover: false,
+      position: "bottom-right" });
     } else {
       toast.success("adicionado(a) aos Favoritos", { icon: "❤️",theme: "light",  autoClose: 500,
-      pauseOnHover: false });
+      pauseOnHover: false, position: "bottom-right" });
       // Se não estiver na lista, adicione-o
       const updatedFavorites = [item, ...storedFavorites];
       setFavoriteItems(updatedFavorites);
@@ -87,7 +88,8 @@ export function Home() {
       localStorage.setItem("@foodrequests", JSON.stringify(updated))
       setRequests(PrevState => [setReq[0], ...PrevState])
       toast.success(`${`${quantity === 1 ? "prato adicionado com sucesso" : `prato adicionado com ${quantity} itens`}`}`, {theme: "light",  autoClose: 800,
-      pauseOnHover: false });
+      pauseOnHover: false,
+      position: "bottom-right" });
 
     }else {
      const Updated = DadosOld.map(newData=> {
@@ -99,7 +101,8 @@ export function Home() {
       setRequests(Updated)
       localStorage.setItem("@foodrequests", JSON.stringify(Updated))
       toast.success(`+${quantity} itens adicionado`, {theme: "light",  autoClose: 500,
-      pauseOnHover: false });
+      pauseOnHover: false,
+      position: "bottom-right" });
     }
     
   }
@@ -185,17 +188,14 @@ export function Home() {
                       </button>
                     )}
 
-                    <button
-                      onClick={() => handleDetails(item.id)}
-                      className="showdish"
-                    >
+                    <div className="showdish">
                       <div className="dish">
                         <img src={`${localhostImg}${item.imgurl}`} alt="" />
                       </div>
-                      <h1>{item.name}</h1>
+                      <button onClick={() => handleDetails(item.id)} className="btn-showdish">{item.name} &gt;</button>
                       <p>{item.description}</p>
                       <span>R${item.price}</span>
-                    </button>
+                    </div>
                     {user.isAdmin ? null : (
                       <Button
                         cartItem={cartItem}
@@ -222,48 +222,45 @@ export function Home() {
                 .filter((item) => item.category === "Sobremesas")
                 .map((item, index) => (
                   <SwiperSlide key={String(item.id)} className="card">
-                  {user && user.isAdmin ? (
-                    <button
-                      onClick={() => buttonEditDish(item.id)}
-                      className="btn-fav-edit"
-                    >
-                      <PiPencilSimpleBold size={30} />
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => toggleHeart(item)}
-                      className="btn-fav-edit"
-                    >
-                      {favoriteItems.some(
-                        (favItem) => favItem.id === item.id
-                      ) ? (
-                        <AiFillHeart size={30} />
-                      ) : (
-                        <AiOutlineHeart size={30} />
-                      )}
-                    </button>
-                  )}
+                    {user && user.isAdmin ? (
+                      <button
+                        onClick={() => buttonEditDish(item.id)}
+                        className="btn-fav-edit"
+                      >
+                        <PiPencilSimpleBold size={30} />
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => toggleHeart(item)}
+                        className="btn-fav-edit"
+                      >
+                        {favoriteItems.some(
+                          (favItem) => favItem.id === item.id
+                        ) ? (
+                          <AiFillHeart size={30} />
+                        ) : (
+                          <AiOutlineHeart size={30} />
+                        )}
+                      </button>
+                    )}
 
-                  <button
-                    onClick={() => handleDetails(item.id)}
-                    className="showdish"
-                  >
-                    <div className="dish">
-                      <img src={`${localhostImg}${item.imgurl}`} alt="" />
+                    <div className="showdish">
+                      <div className="dish">
+                        <img src={`${localhostImg}${item.imgurl}`} alt="" />
+                      </div>
+                      <button onClick={() => handleDetails(item.id)} className="btn-showdish">{item.name} &gt;</button>
+                      <p>{item.description}</p>
+                      <span>R${item.price}</span>
                     </div>
-                    <h1>{item.name}</h1>
-                    <p>{item.description}</p>
-                    <span>R${item.price}</span>
-                  </button>
-                  {user.isAdmin ? null : (
-                    <Button
-                      cartItem={cartItem}
-                      setReq={defaultData.filter((res) => res.id === item.id)}
-                      itemInfo={item}
-                      onChangeQuantity={handleQuantityChange}
-                    />
-                  )}
-                </SwiperSlide>
+                    {user.isAdmin ? null : (
+                      <Button
+                        cartItem={cartItem}
+                        setReq={defaultData.filter((res) => res.id === item.id)}
+                        itemInfo={item}
+                        onChangeQuantity={handleQuantityChange}
+                      />
+                    )}
+                  </SwiperSlide>
                 ))}
             </Swiper>
           </Article>
@@ -281,48 +278,45 @@ export function Home() {
                 .filter((item) => item.category === "Bebidas")
                 .map((item, index) => (
                   <SwiperSlide key={String(item.id)} className="card">
-                  {user && user.isAdmin ? (
-                    <button
-                      onClick={() => buttonEditDish(item.id)}
-                      className="btn-fav-edit"
-                    >
-                      <PiPencilSimpleBold size={30} />
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => toggleHeart(item)}
-                      className="btn-fav-edit"
-                    >
-                      {favoriteItems.some(
-                        (favItem) => favItem.id === item.id
-                      ) ? (
-                        <AiFillHeart size={30} />
-                      ) : (
-                        <AiOutlineHeart size={30} />
-                      )}
-                    </button>
-                  )}
+                    {user && user.isAdmin ? (
+                      <button
+                        onClick={() => buttonEditDish(item.id)}
+                        className="btn-fav-edit"
+                      >
+                        <PiPencilSimpleBold size={30} />
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => toggleHeart(item)}
+                        className="btn-fav-edit"
+                      >
+                        {favoriteItems.some(
+                          (favItem) => favItem.id === item.id
+                        ) ? (
+                          <AiFillHeart size={30} />
+                        ) : (
+                          <AiOutlineHeart size={30} />
+                        )}
+                      </button>
+                    )}
 
-                  <button
-                    onClick={() => handleDetails(item.id)}
-                    className="showdish"
-                  >
-                    <div className="dish">
-                      <img src={`${localhostImg}${item.imgurl}`} alt="" />
+                    <div className="showdish">
+                      <div className="dish">
+                        <img src={`${localhostImg}${item.imgurl}`} alt="" />
+                      </div>
+                      <button onClick={() => handleDetails(item.id)} className="btn-showdish">{item.name} &gt;</button>
+                      <p>{item.description}</p>
+                      <span>R${item.price}</span>
                     </div>
-                    <h1>{item.name}</h1>
-                    <p>{item.description}</p>
-                    <span>R${item.price}</span>
-                  </button>
-                  {user.isAdmin ? null : (
-                    <Button
-                      cartItem={cartItem}
-                      setReq={defaultData.filter((res) => res.id === item.id)}
-                      itemInfo={item}
-                      onChangeQuantity={handleQuantityChange}
-                    />
-                  )}
-                </SwiperSlide>
+                    {user.isAdmin ? null : (
+                      <Button
+                        cartItem={cartItem}
+                        setReq={defaultData.filter((res) => res.id === item.id)}
+                        itemInfo={item}
+                        onChangeQuantity={handleQuantityChange}
+                      />
+                    )}
+                  </SwiperSlide>
                 ))}
             </Swiper>
           </Article>

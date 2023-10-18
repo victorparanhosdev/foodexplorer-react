@@ -56,10 +56,13 @@ export function Header({ onSearch, onFavorites, onRequests, onStatecart }) {
           </span>
         </Link>
 
+        {!user.isAdmin ?
         <Link to="/requests" className="btn-pedido">
           <PiReceipt size={24} />
           <span>{statecart && statecart.length > 0 ? `${statecart.length}` : "0"}</span>
-        </Link>
+        </Link> : null
+        }
+
 
         <div className="menu-toggle">
 
@@ -76,7 +79,7 @@ export function Header({ onSearch, onFavorites, onRequests, onStatecart }) {
 
           {user.isAdmin ? (
             <Link to="/newdish" className="btn-newdish">
-              Novos Pratos
+              Novo prato
             </Link>
           ) : (
             <>
@@ -115,7 +118,7 @@ export function Header({ onSearch, onFavorites, onRequests, onStatecart }) {
 
         {user.isAdmin ? (
           <Link to="/newdish" className="btn-newdish">
-            Novos Pratos
+            Novo prato
           </Link>
         ) : (
           <>

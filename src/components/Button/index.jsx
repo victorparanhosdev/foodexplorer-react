@@ -32,11 +32,11 @@ export function Button({onChangeQuantity, setReq, itemInfo, cartItem}) {
     <Container>
       <div>
         <button onClick={minusButton} type="button">
-          <FiMinus />
+          <FiMinus size={18}/>
         </button>
         <input type="text" value={String(quantity).padStart(2, '0')} readOnly />
         <button onClick={maxButton} type="button">
-          <FiPlus />
+          <FiPlus size={24}/>
         </button>
       </div>
       <button onClick={() => handleClickAdd(setReq)} className="btn-incluir" type="button">
