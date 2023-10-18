@@ -8,13 +8,15 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 import { toast } from "react-toastify";
+import { Loading } from "../../components/Loading";
+
 export function Details() {
   const { user } = useAuth()
   const params = useParams()
 
   const navigate = useNavigate()
 
-  const [data, setData] = useState("")
+  const [data, setData] = useState([])
   const [quantity, setQuantity] = useState(1)
   const [defaultData, setdefaultData] = useState([])
   const [requests, setRequests] = useState([])
@@ -42,9 +44,11 @@ export function Details() {
       const newArray = [newData, ...DadosOld]
       localStorage.setItem("@foodrequests", JSON.stringify(newArray))
       setRequests(prevState => [...prevState, newData])
-      toast.success(`${`${quantity === 1 ? "prato adicionado com sucesso" : `prato adicionadocom ${quantity} itens`}`}`, {theme: "light",  autoClose: 800,
-      pauseOnHover: false,
-      position: "bottom-right" });
+      toast.success(`${`${quantity === 1 ? "prato adicionado com sucesso" : `prato adicionadocom ${quantity} itens`}`}`, {
+        theme: "light", autoClose: 800,
+        pauseOnHover: false,
+        position: "bottom-right"
+      });
 
     } else {
 
@@ -57,9 +61,11 @@ export function Details() {
 
       localStorage.setItem("@foodrequests", JSON.stringify(newArray))
       setRequests(newArray)
-      toast.success(`+${quantity} itens adicionado`, {theme: "light",  autoClose: 500,
-      pauseOnHover: false,
-      position: "bottom-right" });
+      toast.success(`+${quantity} itens adicionado`, {
+        theme: "light", autoClose: 500,
+        pauseOnHover: false,
+        position: "bottom-right"
+      });
     }
 
 
@@ -93,17 +99,19 @@ export function Details() {
 
   }
 
+  async function fetchDetails() {
+    try {
+
+      const response = await api.get(`/dish/${params.id}`);
+      setData(response.data);
+      setdefaultData(response.data);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   useEffect(() => {
-
-
-    async function fetchDetails() {
-
-      const response = await api.get(`/dish/${params.id}`)
-      setData(response.data)
-      setdefaultData(response.data)
-    }
-
     fetchDetails()
 
   }, [])
@@ -112,7 +120,7 @@ export function Details() {
     <Container>
       <Header onRequests={requests} />
 
-      {data && <Content>
+      {data && data.length === 0 ?  <Loading /> : <Content>
         <div className="box-btn-back">
           <button type="button" onClick={(e) => ButtonBack(e)}>
             <MdArrowBackIos />
@@ -131,6 +139,7 @@ export function Details() {
 
               {data.description}
             </p>
+
             {(data.ingredients.length > 0) && <div className="tags-food">
               {data.ingredients.map(item => {
                 return (
@@ -143,11 +152,11 @@ export function Details() {
             <div className="box-incluir">
               {user.isAdmin ? <button onClick={handleEditDish} className="btn-incluir" type="button">Editar prato</button> : <><div>
                 <button onClick={minusButton} type="button">
-                  <FiMinus size={24}/>
+                  <FiMinus size={24} />
                 </button>
                 <input type="text" value={String(quantity).padStart(2, '0')} readOnly />
                 <button onClick={maxButton} type="button">
-                  <FiPlus size={24}/>
+                  <FiPlus size={24} />
                 </button>
               </div>
                 <button onClick={cartItem} className="btn-incluir" type="button">incluir • R${Number(data.price) * quantity}</button></>

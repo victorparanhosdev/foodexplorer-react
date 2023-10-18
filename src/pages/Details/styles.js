@@ -6,6 +6,7 @@ export const Container = styled.div`
   grid-template-rows: 10.4rem auto 7.7rem;
   grid-auto-columns: 100%;
   background: ${({ theme }) => theme.COLORS.DARK_400};
+  
   @media (max-width: 430px) {
     grid-template-rows: auto 7.7rem;
   }

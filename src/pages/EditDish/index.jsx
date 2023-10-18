@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { NewTag } from "../../components/NewTag";
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
-
+import { Loading } from "../../components/Loading";
 export function EditDish() {
   const navigate = useNavigate();
   const params = useParams();
@@ -42,14 +42,24 @@ export function EditDish() {
       api.patch(`/dish/${params.id}/`, formData)
     }
 
+    const stateToast = toast.promise(
+      api.put(`/dish/${params.id}`, editDish),
+      {
+        pending: "Atualizando prato...", // Mensagem exibida durante o carregamento
+      }
+    );
 
-    await api.put(`/dish/${params.id}`, editDish).then(() => {
+    try {
+
+      await stateToast
+      toast.dismiss(stateToast)
       toast.success("Prato editado com sucesso!!", {
         autoClose: 500,
         pauseOnHover: false
       })
       navigate("/")
-    }).catch(error => {
+
+    } catch (error) {
       if (error.response) {
         toast.error(error.response.data.message, {
           autoClose: 500,
@@ -61,7 +71,11 @@ export function EditDish() {
           pauseOnHover: false
         })
       }
-    })
+
+    }
+
+
+
 
 
   }
@@ -71,24 +85,48 @@ export function EditDish() {
     const isOk = confirm("Tem certeza que deseja excluir ?")
 
     if (isOk) {
-     
-      await api.delete(`/dish/${params.id}`).then(() => {
-        toast.error("Prato excluido com sucesso", { icon: "🗑️", theme: "light",  autoClose: 600, pauseOnHover: false})
-        navigate("/")
-      }).catch(error => {
-        if (error.response) {
-          toast.error(error.response.data.message, {theme: "light",  autoClose: 1200, pauseOnHover: false})
-        } else {
-          toast.error("Error Internal", {theme: "light",  autoClose: 600, pauseOnHover: false})
+
+
+      const stateToast = toast.promise(
+        api.delete(`/dish/${params.id}`),
+        {
+          pending: "Excluindo prato...", // Mensagem exibida durante o carregamento
         }
-      });
+      );
+
+      try {
+        await stateToast
+        toast.dismiss(stateToast)
+        toast.error("Prato excluido com sucesso", { icon: "🗑️", theme: "light", autoClose: 600, pauseOnHover: false })
+        navigate("/");
+
+
+      } catch (error) {
+        if (error.response) {
+          toast.error(error.response.data.message, { theme: "light", autoClose: 1200, pauseOnHover: false })
+        } else {
+          toast.error("Error Internal", { theme: "light", autoClose: 600, pauseOnHover: false })
+        }
+
+      }
+
+
+
+
+
     }
 
+
+
+
+
+
+
   }
-  
+
   function handleClickNewIngredients() {
     if (newingredients === "") {
-      return toast.warning("Não aceitamos ingrediente vazio", {theme: "light",  autoClose: 600, pauseOnHover: false});
+      return toast.warning("Não aceitamos ingrediente vazio", { theme: "light", autoClose: 600, pauseOnHover: false });
     }
 
     setIngredients((prevState) => [...prevState, newingredients]);
@@ -117,7 +155,7 @@ export function EditDish() {
     <Container>
       <Header />
 
-      {data && (
+      {data && data.length === 0 ? <Loading /> : (
         <Content>
           <div className="box-btn-back">
             <button type="button" onClick={(e) => ButtonBack(e)}>

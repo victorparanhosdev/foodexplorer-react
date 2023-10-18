@@ -11,9 +11,9 @@ export function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const {signIn, loading} = useAuth();
+  const { signIn, loading } = useAuth();
 
-  function handleSignIn(event) {
+  async function handleSignIn(event) {
     event.preventDefault();
     if (!email || !password) {
       return toast.warning("Preencha E-mail e Senha", {
@@ -22,14 +22,15 @@ export function SignIn() {
       });
     }
 
-   
 
-    const statusToast = toast.promise(signIn({ email, password }), {
-      pending: 'Entrando, aguarde...',    
-      });
+
+    await toast.promise(signIn({ email, password }), {
+      pending: 'Entrando, aguarde...',
+    });
+
 
     toast.dismiss(statusToast)
-   
+
   }
 
   return (

@@ -16,6 +16,7 @@ import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import { PiPencilSimpleBold } from "react-icons/pi";
 import { toast } from 'react-toastify';
+import { Loading } from "../../components/Loading"
 export function Home() {
   const navigate = useNavigate();
 
@@ -38,7 +39,7 @@ export function Home() {
 
   const toggleHeart = (item) => {
     // Verifique se o item já está na lista de favoritos
-  
+
     const storedFavorites =
       JSON.parse(localStorage.getItem("@FavoritesFoodExplorer")) || [];
 
@@ -58,12 +59,16 @@ export function Home() {
         "@FavoritesFoodExplorer",
         JSON.stringify(updatedFavorites)
       );
-      toast.error("removido dos Favoritos", { icon: "🤍", theme: "light",  autoClose: 400,
-      pauseOnHover: false,
-      position: "bottom-right" });
+      toast.error("removido dos Favoritos", {
+        icon: "🤍", theme: "light", autoClose: 400,
+        pauseOnHover: false,
+        position: "bottom-right"
+      });
     } else {
-      toast.success("adicionado(a) aos Favoritos", { icon: "❤️",theme: "light",  autoClose: 500,
-      pauseOnHover: false, position: "bottom-right" });
+      toast.success("adicionado(a) aos Favoritos", {
+        icon: "❤️", theme: "light", autoClose: 500,
+        pauseOnHover: false, position: "bottom-right"
+      });
       // Se não estiver na lista, adicione-o
       const updatedFavorites = [item, ...storedFavorites];
       setFavoriteItems(updatedFavorites);
@@ -83,28 +88,32 @@ export function Home() {
     setReq[0].quantity = quantity
     let DadosOld = JSON.parse(localStorage.getItem("@foodrequests")) || [];
     const haveData = DadosOld.some(itemFind => itemFind.id === setReq[0].id)
-    if(!haveData){
+    if (!haveData) {
       const updated = [setReq[0], ...DadosOld]
       localStorage.setItem("@foodrequests", JSON.stringify(updated))
       setRequests(PrevState => [setReq[0], ...PrevState])
-      toast.success(`${`${quantity === 1 ? "prato adicionado com sucesso" : `prato adicionado com ${quantity} itens`}`}`, {theme: "light",  autoClose: 800,
-      pauseOnHover: false,
-      position: "bottom-right" });
+      toast.success(`${`${quantity === 1 ? "prato adicionado com sucesso" : `prato adicionado com ${quantity} itens`}`}`, {
+        theme: "light", autoClose: 800,
+        pauseOnHover: false,
+        position: "bottom-right"
+      });
 
-    }else {
-     const Updated = DadosOld.map(newData=> {
-        if(newData.id === setReq[0].id){
-          return {...newData, quantity: newData.quantity + quantity}
+    } else {
+      const Updated = DadosOld.map(newData => {
+        if (newData.id === setReq[0].id) {
+          return { ...newData, quantity: newData.quantity + quantity }
         }
         return newData
       })
       setRequests(Updated)
       localStorage.setItem("@foodrequests", JSON.stringify(Updated))
-      toast.success(`+${quantity} itens adicionado`, {theme: "light",  autoClose: 500,
-      pauseOnHover: false,
-      position: "bottom-right" });
+      toast.success(`+${quantity} itens adicionado`, {
+        theme: "light", autoClose: 500,
+        pauseOnHover: false,
+        position: "bottom-right"
+      });
     }
-    
+
   }
 
   function handleQuantityChange(itemId, newQuantity) {
@@ -152,7 +161,7 @@ export function Home() {
         onSearch={handleSearch}
       />
       <Banner />
-      <Content>
+      {data && data.length === 0 ? <Loading /> : <Content>
         {data.some((item) => item.category === "Refeições") && (
           <Article title="Refeições">
             <Swiper
@@ -321,7 +330,7 @@ export function Home() {
             </Swiper>
           </Article>
         )}
-      </Content>
+      </Content>}
       <Footer />
     </Container>
   );

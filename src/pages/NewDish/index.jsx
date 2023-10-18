@@ -87,27 +87,33 @@ export function NewDish() {
       return toast.warning("Coloque uma descrição", {theme: "light",  autoClose: 1500, pauseOnHover: false});
     }
 
-    try {
 
-      const dishData = {
-        name,
-        category,
-        price,
-        description,
-        ingredients,
-      };
-    
-      const formData = new FormData();
-      
-      if (file) {
-        formData.append("uploadImg", file);
-
-      }
+    const dishData = {
+      name,
+      category,
+      price,
+      description,
+      ingredients,
+    };
   
-      formData.append("dishData", JSON.stringify(dishData));
+    const formData = new FormData();
     
-      await api.post("/dish", formData);
+    if (file) {
+      formData.append("uploadImg", file);
+
+    }
+
+    formData.append("dishData", JSON.stringify(dishData));
+  
+    const stateToast = toast.promise(api.post("/dish", formData), {
+      pending: "Adicionando novo prato..."
+    });
+
+    try {
+      
+      await stateToast
       toast.success("Prato adicionado com sucesso!!", { icon: "🗑️", theme: "light",  autoClose: 1000, pauseOnHover: false})
+      toast.dismiss(stateToast)
       navigate("/");
     
 
