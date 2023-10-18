@@ -11,7 +11,7 @@ export function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { signIn, loading } = useAuth();
+  const {signIn, loading} = useAuth();
 
   async function handleSignIn(event) {
     event.preventDefault();
@@ -22,15 +22,15 @@ export function SignIn() {
       });
     }
 
+   
 
-
-    await toast.promise(signIn({ email, password }), {
-      pending: 'Entrando, aguarde...',
-    });
-
-
+    const statusToast = toast.promise(signIn({ email, password }), {
+      pending: 'Entrando, aguarde...',    
+      });
+      
+    
     toast.dismiss(statusToast)
-
+   
   }
 
   return (

@@ -103,7 +103,7 @@ export const Container = styled.header`
     width: 100%;
     height: 10.4rem;
     z-index: 2;
-
+  
     nav {
       display: none;
     }

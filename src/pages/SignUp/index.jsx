@@ -22,24 +22,25 @@ export function SignUp() {
       });
     }
 
+    const stateToast = toast.promise(api.post("/users", { name, email, password }), {
+      pending: {
+        render(){
+          setLoading(true)
+          return "Criando a conta, aguarde..."
+        }
+      }
+    })
+
     try {
-      await toast.promise(api.post("/users", { name, email, password }), {
-        pending: {
-          render() {
-            setLoading(true); // Define loading como true enquanto estiver pendente
-            return "Criando a conta, aguarde...";
-          },
-        },
-        success: {
-          render() {
-            setLoading(false); // Define loading como false após o sucesso
-            navigate("/");
-            return `Usuário Cadastrado com Sucesso`;
-          },
-          autoClose: 1500,
-          pauseOnHover: false,
-        },
-      });
+      await stateToast
+      setLoading(false) // Define loading como false após o sucesso
+      toast.dismiss(stateToast)
+      toast.success("Usuário Cadastrado com Sucesso", {
+        autoClose: 1500,
+        pauseOnHover: false
+      })
+     
+      navigate("/");
     } catch (error) {
       setLoading(false);
       return toast.error(error.response.data.message, {
