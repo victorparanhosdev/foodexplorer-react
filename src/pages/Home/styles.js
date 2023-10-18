@@ -28,13 +28,12 @@ export const Content = styled.section`
 }
 
 
-
 .swiper-button-prev:after, .swiper-button-next:after {
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
     font-size: 2.75rem;
 
-
 }
+
 .card {
     position: relative;
     background: ${({ theme }) => theme.COLORS.DARK_200};
@@ -90,6 +89,10 @@ export const Content = styled.section`
     
     img {
         width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
     }
 
     }

@@ -45,6 +45,8 @@ export const Content = styled.section`
       img {
         display: block;
         width: 100%;
+        object-fit: cover;
+        object-position: center;
       }
     }
 
