@@ -8,12 +8,10 @@ function AuthProvider({ children }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false)
 
-  
   async function signIn({ email, password }) {
     try {
       setLoading(true)
       const usuario = await api.post("/sessions", { email, password });
-
       const { token, user } = usuario.data;
 
       const userData = {
@@ -68,7 +66,7 @@ function AuthProvider({ children }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ signIn, user: data, signOut, loading }}>
+    <AuthContext.Provider value={{ signIn, user: data, signOut, loading}}>
       {children}
     </AuthContext.Provider>
   );

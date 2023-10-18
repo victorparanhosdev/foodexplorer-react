@@ -9,6 +9,9 @@ background: ${({theme})=> theme.COLORS.DARK_400};
 
 .disabled {
     opacity: 0.5;
+    &:hover {
+        background: ${({theme})=> theme.COLORS.TINTS_TOMATO_100};
+    }
 }
 
 > div {
