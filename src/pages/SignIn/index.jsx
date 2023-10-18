@@ -16,7 +16,7 @@ export function SignIn() {
   function handleSignIn(event) {
     event.preventDefault();
     if (!email || !password) {
-      return toast.error("Preencha todos os campos para logar o usuario", {
+      return toast.warning("Preencha E-mail e Senha", {
         autoClose: 1200,
         pauseOnHover: false,
       });

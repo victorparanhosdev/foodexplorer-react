@@ -7,6 +7,8 @@ const AuthContext = createContext({});
 function AuthProvider({ children }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false)
+
+  
   async function signIn({ email, password }) {
     try {
       setLoading(true)
