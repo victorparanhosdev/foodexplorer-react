@@ -125,7 +125,9 @@ export const Content = styled.section`
       font-size: 2rem;
     }
 
-
+    div.box-incluir .btn-incluir {
+      width: 100%;
+    }
     .dish {
       flex-direction: column;
       display: flex;

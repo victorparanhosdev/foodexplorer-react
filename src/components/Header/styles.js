@@ -170,6 +170,7 @@ export const Container = styled.header`
     }
 
     menu.menu-mobile.active .menu-hamburguer {
+      width: 4rem;
       position: relative;
       z-index: 3;
 
