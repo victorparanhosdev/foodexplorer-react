@@ -191,9 +191,7 @@ export const Content = styled.section`
     .showdish .btn-showdish {
         font-size: 1.4rem;
     }
-    .swiper-button-prev:after, .swiper-button-next:after{
-        display: none;
-    }
+    
 
 
 }
