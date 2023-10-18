@@ -5,7 +5,7 @@ min-height: 100vh;
 display: grid;
 grid-template-rows: 10.4rem auto auto 7.7rem;
 grid-auto-columns: 100%;
-background: ${({theme})=> theme.COLORS.DARK_400};
+background: ${({ theme }) => theme.COLORS.DARK_400};
 
 
 @media (max-width: 430px){
@@ -82,7 +82,7 @@ export const Content = styled.section`
         position: absolute;
         top: 1.5rem;
         right: 1.5rem;
-        color: ${({theme})=> theme.COLORS.LIGHT_300};
+        color: ${({ theme }) => theme.COLORS.LIGHT_300};
         cursor: pointer;
 
     }
@@ -99,6 +99,8 @@ export const Content = styled.section`
 
 
     .btn-showdish {
+        width: 100%;
+        overflow: hidden;
      white-space: nowrap;
      text-overflow: ellipsis;
     font-size: 2.4rem;
@@ -122,7 +124,7 @@ export const Content = styled.section`
     text-align: center;
     }
     > span {
-        color: ${({theme})=> theme.COLORS.TINTS_CAKE_200};
+        color: ${({ theme }) => theme.COLORS.TINTS_CAKE_200};
         font-family: "Roboto", sans-serif;
         font-weight: 400;
         font-size: 2.4rem;
@@ -154,8 +156,8 @@ export const Content = styled.section`
       
 
        .btn-incluir {
-        background-color: ${({theme})=> theme.COLORS.TINTS_TOMATO_100};
-        color: ${({theme})=> theme.COLORS.LIGHT_100};
+        background-color: ${({ theme }) => theme.COLORS.TINTS_TOMATO_100};
+        color: ${({ theme }) => theme.COLORS.LIGHT_100};
         font-weight: 400;
         padding: 1.2rem 2.4rem;
         border-radius: 0.5rem;
