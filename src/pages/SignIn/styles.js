@@ -25,6 +25,7 @@ background: ${({theme})=> theme.COLORS.DARK_400};
 @media (max-width: 430px){
  display: grid;
  place-content: center;
+ justify-content: stretch;
  background: ${({theme})=> theme.COLORS.DARK_700};
 
  >div {
@@ -53,6 +54,11 @@ width: min(47.6rem, 100%);
 background: ${({theme})=> theme.COLORS.DARK_700};
 padding: 6.4rem;
 border-radius: 1.6rem;
+
+@media (max-width: 430px){
+    width: 90%;
+    margin: auto
+}
 
 
 h1 {

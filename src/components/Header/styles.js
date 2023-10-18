@@ -110,7 +110,7 @@ export const Container = styled.header`
 
     menu.menu-mobile {
       display: flex;
-
+      justify-content: space-between;
       align-items: center;
       width: min(112rem, 95%);
       margin: auto;
@@ -151,9 +151,7 @@ export const Container = styled.header`
           right: -0.5rem;
         }
       }
-      .logo {
-        padding-inline: 6.5rem;
-      }
+   
       .logo span{
         display: flex;
         align-items: center;

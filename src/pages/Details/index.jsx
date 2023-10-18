@@ -74,7 +74,7 @@ export function Details() {
 
   function ButtonBack(event) {
     event.preventDefault()
-    navigate(-1)
+    navigate("/")
 
   }
 

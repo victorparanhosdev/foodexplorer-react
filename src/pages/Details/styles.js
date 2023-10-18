@@ -108,7 +108,6 @@ export const Content = styled.section`
       padding: 1.2rem 2.4rem;
       border-radius: 0.5rem;
       border: none;
-      width: 100%;
       cursor: pointer;
       transition: background 0.3s;
 
@@ -128,7 +127,8 @@ export const Content = styled.section`
 
 
     .dish {
-      display: grid;
+      flex-direction: column;
+      display: flex;
   
 
 

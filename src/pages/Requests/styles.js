@@ -53,7 +53,7 @@ gap: 7.5rem;
             padding: 1rem;
             border-radius: 0.5rem;
             color: ${({theme})=> theme.COLORS.LIGHT_100};
-            margin-top: 1rem;
+            margin-top: 2rem;
             transition: background 0.2s;
      
             &:hover {
