@@ -69,7 +69,9 @@ export function EditDish() {
 
   async function ExcluirEdit() {
     const isOk = confirm("Tem certeza que deseja excluir ?")
+
     if (isOk) {
+     
       await api.delete(`/dish/${params.id}`).then(() => {
         toast.error("Prato excluido com sucesso", { icon: "🗑️", theme: "light",  autoClose: 600, pauseOnHover: false})
         navigate("/")
@@ -83,6 +85,7 @@ export function EditDish() {
     }
 
   }
+  
   function handleClickNewIngredients() {
     if (newingredients === "") {
       return toast.warning("Não aceitamos ingrediente vazio", {theme: "light",  autoClose: 600, pauseOnHover: false});

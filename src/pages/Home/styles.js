@@ -99,6 +99,8 @@ export const Content = styled.section`
 
 
     .btn-showdish {
+     white-space: nowrap;
+     text-overflow: ellipsis;
     font-size: 2.4rem;
     font-weight: 700;
     text-align: center;
@@ -113,7 +115,7 @@ export const Content = styled.section`
     font-size: 1.4rem;
     font-weight: 400;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow: hidden;
