@@ -27,7 +27,7 @@ export function SignUp() {
         render(){
           setLoading(true)
           return "Criando a conta, aguarde..."
-        }
+        }, theme: "dark"
       }
     })
 

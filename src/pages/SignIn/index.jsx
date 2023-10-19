@@ -24,9 +24,11 @@ export function SignIn() {
 
    
 
-    const statusToast = toast.promise(signIn({ email, password }), {
-      pending: 'Verificando usuario, aguarde...',    
-      });
+    const statusToast = toast.promise(signIn({ email, password }), {pending: {
+      render(){
+        return 'Verificando usuario, aguarde...'
+      }, theme: 'dark'
+    }, });
       
     
     toast.dismiss(statusToast)
