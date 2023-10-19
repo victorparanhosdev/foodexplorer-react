@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-height: 100vh;
+min-height: 100vh;
 display: flex;
 align-items: center;
 justify-content: space-evenly;
@@ -34,8 +34,9 @@ background: ${({theme})=> theme.COLORS.DARK_400};
  justify-content: center;
  background: ${({theme})=> theme.COLORS.DARK_700};
 
- >div {
 
+ >div {
+    padding-top: 3rem;
     span {
         font-size: 3.7rem;
     }
@@ -44,6 +45,7 @@ background: ${({theme})=> theme.COLORS.DARK_400};
 
  form {
     padding: 0;
+    padding-bottom: 3rem;
  }
 
  form h1 {
