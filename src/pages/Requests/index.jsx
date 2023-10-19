@@ -8,6 +8,7 @@ import { MdPix } from "react-icons/md"
 import { PiCreditCard, PiReceipt } from "react-icons/pi"
 import emptyCart from "../../assets/empty-cart.svg"
 import { useNavigate } from "react-router-dom";
+import paymentPix from "../../assets/pix.svg"
 export function Requests() {
   const [statecart, setStateCart] = useState([])
   const [statePayment, setStatePayment] = useState("pix")
@@ -128,7 +129,7 @@ export function Requests() {
             <tbody>
               <tr>
                 <td colSpan="2">
-                  {statePayment === "pix" ? <img src="/src/assets/pix.svg" alt="" /> :
+                  {statePayment === "pix" ? <img src={paymentPix} alt="" /> :
 
                     <div className="cartao-credit">
                       <div className="n-cartao">
