@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
-
+import { ThreeDots } from "react-loader-spinner";
 export function SignUp() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -83,7 +83,18 @@ export function SignUp() {
           onClick={(e) => handleCreateAccount(e)}
           type="submit"
         >
-          {loading ? "Cadastrando..." : "Criar conta"}
+          {loading ? (
+            <ThreeDots
+              height="24"
+              width="40"
+              radius="9"
+              color="white"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={true}
+            />
+          ) : "Criar conta"}
         </button>
         <Link to="/">Já tenho uma conta</Link>
       </Form>

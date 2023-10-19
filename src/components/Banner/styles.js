@@ -15,6 +15,7 @@ export const Container = styled.div`
         width: min(56.2rem, 100%);
         margin-left: -5rem;
         margin-top: -10rem;
+        filter: brightness(1.2);
 
     }
 

@@ -191,6 +191,7 @@ export const Content = styled.section`
 
     .edit-content >div:nth-child(1) >div:nth-child(3) select {
       width: 100%;
+      padding: 1.2rem 1.4rem;
     }
 
     .edit-content >div:nth-child(4) {

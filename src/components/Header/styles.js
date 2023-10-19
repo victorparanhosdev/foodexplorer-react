@@ -103,7 +103,7 @@ export const Container = styled.header`
     width: 100%;
     height: 10.4rem;
     z-index: 2;
-  
+
     nav {
       display: none;
     }
@@ -116,18 +116,22 @@ export const Container = styled.header`
       margin: auto;
 
       .menu-hamburguer {
-        width: 3rem;
-        height: 3rem;
-        display: grid;
-        place-items: center;
+        height: 3.5rem;
+        display: block;
 
         .line-one,
         .line-two,
         .line-three {
           background-color: white;
-          width: 100%;
+          width: 3.5rem;
           height: 0.2rem;
           transition: transform 0.2s;
+        }
+        div:first-child {
+          margin-top: 0.5rem;
+        }
+        div:not(:last-child) {
+          margin-bottom: 1rem;
         }
       }
 
@@ -151,8 +155,8 @@ export const Container = styled.header`
           right: -0.5rem;
         }
       }
-   
-      .logo span{
+
+      .logo span {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -160,10 +164,32 @@ export const Container = styled.header`
       }
 
       .menu-toggle {
-        display: none;
+        position: absolute;
+        inset: 0;
+        height: 100vh;
+        opacity: 0;
+        visibility: hidden;
+        width: 100vw;
+        z-index: -1;
+
+        .menu-expand {
+          position: absolute;
+          top: 10.3rem;
+          width: 0%;
+          height: calc(100vh + 10.4rem);
+          background: ${({ theme }) => theme.COLORS.DARK_400};
+          padding-top: 3.6rem;
+          padding-inline: 2.8rem;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.4s;
+        }
       }
     }
-
+    menu.menu-mobile:has(a):has(span):has(p) {
+      justify-content: initial;
+      gap: 6.5rem;
+    }
     .menu-mobile.active .btn-pedido,
     .menu-mobile.active .logo {
       display: none;
@@ -183,93 +209,83 @@ export const Container = styled.header`
         font-size: 2.1rem;
       }
     }
-
-    .menu-mobile.active .menu-toggle {
-      display: block;
-      position: absolute;
-      inset: 0;
-      height: 100vh;
-      width: 100vw;
-      z-index: 2;
-    }
-
-    .menu-mobile.active .line-two {
-      display: none;
-    }
-
-    .menu-mobile.active .line-one {
-      transform: rotate(45deg) translate(1rem, 0rem);
-    }
-
-    .menu-mobile.active .line-three {
-      transform: rotate(-45deg) translate(1rem, 0rem);
-    }
-
-    .menu-mobile.active .menu-expand {
-      position: absolute;
-      top: 10.3rem;
-      width: 100%;
-      height: calc(100vh + 10.4rem);
-      background: ${({ theme }) => theme.COLORS.DARK_400};
-      padding-top: 3.6rem;
-      padding-inline: 2.8rem;
-      > div:nth-child(1) {
-        display: flex;
-        align-items: center;
-        background: ${({ theme }) => theme.COLORS.DARK_900};
-        border-radius: 0.5rem;
-        padding-inline: 1.2rem;
-        height: 4.8rem;
-        width: min(40.9rem, 100%);
-        margin-bottom: 3.6rem;
-        svg {
-          color: ${({ theme }) => theme.COLORS.LIGHT_400};
-        }
-
-        input {
-          color: ${({ theme }) => theme.COLORS.LIGHT_400};
-          width: 100%;
-          padding-block: 1.6rem;
-          outline: none;
-          border: none;
-          background: transparent;
-          margin-left: 1.4rem;
-          font-family: "Roboto", sans-serif;
-        }
-
-        &:focus-within {
-          outline: 2px solid ${({ theme }) => theme.COLORS.LIGHT_400};
-        }
-      }
-
-      a {
-        background: transparent;
-        padding: 1rem;
-        text-align: start;
-        display: block;
-        font-size: 2.4rem;
-        font-weight: 200;
-        color: ${({ theme }) => theme.COLORS.LIGHT_300};
-        border-bottom: 1px solid ${({ theme }) => theme.COLORS.DARK_1000};
-      }
-      button {
-        border: none;
-        background: transparent;
-        color: white;
-        font-size: 2.4rem;
-        display: block;
-        padding: 1rem;
-        font-weight: 200;
-        width: 100%;
-        text-align: start;
-        color: ${({ theme }) => theme.COLORS.LIGHT_300};
-        border-bottom: 1px solid ${({ theme }) => theme.COLORS.DARK_1000};
-      }
-
-    }
   }
 
+  .menu-mobile.active .menu-toggle {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+  }
 
+  .menu-mobile.active .line-two {
+    display: none;
+  }
 
+  .menu-mobile.active .line-one {
+    transform: rotate(42deg) translate(0.8rem, 0.8rem);
+  }
 
+  .menu-mobile.active .line-three {
+    transform: rotate(-42deg) translate(0rem, 0rem);
+  }
+
+  .menu-mobile.active .menu-toggle .menu-expand {
+    opacity: 1;
+    visibility: visible;
+    width: 100%;
+
+    > div:nth-child(1) {
+      display: flex;
+      align-items: center;
+      background: ${({ theme }) => theme.COLORS.DARK_900};
+      border-radius: 0.5rem;
+      padding-inline: 1.2rem;
+      height: 4.8rem;
+      width: min(40.9rem, 100%);
+      margin-bottom: 3.6rem;
+      svg {
+        color: ${({ theme }) => theme.COLORS.LIGHT_400};
+      }
+
+      input {
+        color: ${({ theme }) => theme.COLORS.LIGHT_400};
+        width: 100%;
+        padding-block: 1.6rem;
+        outline: none;
+        border: none;
+        background: transparent;
+        margin-left: 1.4rem;
+        font-family: "Roboto", sans-serif;
+      }
+
+      &:focus-within {
+        outline: 2px solid ${({ theme }) => theme.COLORS.LIGHT_400};
+      }
+    }
+
+    a {
+      background: transparent;
+      padding: 1rem;
+      text-align: start;
+      display: block;
+      font-size: 2.4rem;
+      font-weight: 200;
+      color: ${({ theme }) => theme.COLORS.LIGHT_300};
+      border-bottom: 1px solid ${({ theme }) => theme.COLORS.DARK_1000};
+    }
+    button {
+      border: none;
+      background: transparent;
+      color: white;
+      font-size: 2.4rem;
+      display: block;
+      padding: 1rem;
+      font-weight: 200;
+      width: 100%;
+      text-align: start;
+      color: ${({ theme }) => theme.COLORS.LIGHT_300};
+      border-bottom: 1px solid ${({ theme }) => theme.COLORS.DARK_1000};
+    }
+  }
 `;

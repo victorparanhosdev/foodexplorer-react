@@ -30,9 +30,8 @@ background: ${({theme})=> theme.COLORS.DARK_400};
 
 
 @media (max-width: 430px){
- display: grid;
- place-content: center;
- justify-content: stretch;
+ flex-direction: column;
+ justify-content: center;
  background: ${({theme})=> theme.COLORS.DARK_700};
 
  >div {
@@ -65,7 +64,7 @@ border-radius: 1.6rem;
 
 @media (max-width: 430px){
     width: 90%;
-    margin: auto
+
 }
 
 h1 {

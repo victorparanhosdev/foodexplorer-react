@@ -52,6 +52,8 @@ export const Content = styled.section`
     }
 
     > div:last-child {
+   
+
       > h1 {
         color: ${({ theme }) => theme.COLORS.LIGHT_100};
         font-size: 4rem;
@@ -150,10 +152,17 @@ export const Content = styled.section`
       }
  
       > div:last-child {
-
+        place-self: stretch;
 
         >h1{
         font-size: 2.7rem;
+        text-align: center;
+        }
+        >p {
+          text-align: center;
+        }
+        .tags-food {
+          justify-content: center;
         }
         
    
